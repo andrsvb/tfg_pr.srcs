@@ -1,2 +1,2 @@
-# tfg_compu
- TFG del Grado de Computadores
+# TFG Computadores
+ TFG del Grado de Ingeniería de Computadores
