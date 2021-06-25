@@ -56,7 +56,7 @@ component sum_32bits is
 end component;
 
 signal s_nextPC : std_logic_vector (31 downto 0);
-signal s_PC : std_logic_vector (31 downto 0) := "00000000000000000000000000000000";
+signal s_PC : std_logic_vector (31 downto 0) := x"00000000";
 signal s_PC4 : std_logic_vector (31 downto 0);
 
 begin
@@ -67,7 +67,7 @@ pc_PC4 <= s_PC4;
 sumPC4 : sum_32bits
   port map(
     a_32 => s_PC,
-    b_32 => "00000000000000000000000000000100",
+    b_32 => x"00000004",
     c_in_32 => '0',
     s_32 => s_PC4
   );
@@ -77,7 +77,7 @@ s_nextPC <= pc_jumpADDR when (pc_jump = '1') else pc_branchADDR when (pc_branch 
 process (pc_clk, pc_reset)
 begin
     if (pc_reset = '1') then
-        s_PC <= "00000000000000000000000000000000";
+        s_PC <= x"00000000";
     elsif (pc_clk'event and pc_clk = '1') then
         s_PC <= s_nextPC;
     end if;

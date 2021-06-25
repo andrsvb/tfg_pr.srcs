@@ -38,7 +38,8 @@ entity eIF is
         if_branchADDR : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
         if_jumpADDR : in std_logic_vector (31 downto 0);
-        if_PC4 : out std_logic_vector (31 downto 0)
+        if_PC4 : out std_logic_vector (31 downto 0);
+        if_instr : out std_logic_vector (31 downto 0)
     );
 end eIF;
 
@@ -56,17 +57,20 @@ component PC is
     );
 end component;
 
-component InstrMem is
-    Port ( 
-        im_clk : in STD_LOGIC
-    );
+component instr_rom IS
+  PORT (
+    clka : IN STD_LOGIC;
+    ena : IN STD_LOGIC;
+    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+  );
 end component;
 
 signal s_pc: std_logic_vector (31 downto 0);
 
 begin
 
-bPC: PC
+IF_PC: PC
   port map(
       pc_clk => if_clk,
       pc_reset => if_reset,
@@ -76,6 +80,14 @@ bPC: PC
       pc_jumpADDR => if_jumpADDR,
       pc_PC4 => if_pc4,
       pc_PC => s_pc
+  );
+
+ IF_InstrMem: instr_rom
+  port map(
+      clka => if_clk,
+      ena => '1',
+      addra => s_pc(6 downto 2),
+      douta => if_instr
   );
 
 end Behavioral;
