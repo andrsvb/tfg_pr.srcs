@@ -75,8 +75,7 @@ component sum_32bits is
     a_32 : in std_logic_vector (31 downto 0);
     b_32 : in std_logic_vector (31 downto 0);
     c_in_32 : in std_logic;
-    s_32 : out std_logic_vector (31 downto 0);
-    c_out_32 : out std_logic
+    s_32 : out std_logic_vector (31 downto 0)
   );
 end component;
 
@@ -89,7 +88,6 @@ signal s_overflow : std_logic;
 signal s_c_out : std_logic;
 signal s_zero : std_logic;
 signal s_pc_add : std_logic_vector (31 downto 0);
-signal s_pc_out : std_logic;
 
 begin
 
@@ -122,13 +120,12 @@ EX_ctrlALU : ALU_ctrl
 s_pc_add <= inst_low(29 downto 0) & "00";
 
 -- pc + branch => target
-suma : sum_32bits
+suma_branch : sum_32bits
   port map(
     a_32 => pc,
     b_32 => s_pc_add,
     c_in_32 => '0',
-    s_32 => branch_target,
-    c_out_32 => s_pc_out
+    s_32 => branch_target
   );
 
 end Behavioral;
