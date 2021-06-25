@@ -32,12 +32,28 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity rIF_ID is
-    Port ( clk : in STD_LOGIC);
+    Port (
+        fd_clk, fd_reset : in STD_LOGIC;
+        in_PC4 : in std_logic_vector (31 downto 0);
+        in_instr : in std_logic_vector (31 downto 0);
+        out_PC4 : out std_logic_vector (31 downto 0);
+        out_instr : out std_logic_vector (31 downto 0)
+    );
 end rIF_ID;
 
 architecture Behavioral of rIF_ID is
 
 begin
 
+process (fd_clk, fd_reset)
+begin
+    if (fd_reset = '1') then
+        out_PC4 <= x"00000000";
+        out_instr <= x"00000000";
+    elsif (fd_clk'event and fd_clk = '1') then
+        out_PC4 <= in_PC4;
+        out_instr <= in_instr;
+    end if;
+end process;
 
 end Behavioral;
