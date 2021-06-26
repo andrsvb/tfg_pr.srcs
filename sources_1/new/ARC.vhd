@@ -38,9 +38,17 @@ end ARC;
 
 architecture Behavioral of ARC is
 
+--                                                                                    COMPONENTS
+
 component eIF IS
   PORT (
-        if_clk, if_reset : in STD_LOGIC
+        if_clk, if_reset : in STD_LOGIC;
+        if_branch : in std_logic;
+        if_branchADDR : in std_logic_vector (31 downto 0);
+        if_jump : in std_logic;
+        if_jumpADDR : in std_logic_vector (31 downto 0);
+        if_PC4 : out std_logic_vector (31 downto 0);
+        if_instr : out std_logic_vector (31 downto 0)
   );
 end component;
 
@@ -92,12 +100,29 @@ component eWB IS
   );
 end component;
 
+--                                                                                    SIGNALS
+
+signal s_if_branch : std_logic;
+signal s_if_branchADDR : std_logic_vector (31 downto 0);
+signal s_if_jump : std_logic;
+signal s_if_jumpADDR : std_logic_vector (31 downto 0);
+signal s_if_PC4 : std_logic_vector (31 downto 0);
+signal s_if_instr : std_logic_vector (31 downto 0);
+
 begin
+
+--                                                                                    BEGIN
 
 e_IF: eIF
   PORT MAP(
         if_clk => clk,
-        if_reset => reset
+        if_reset => reset,
+        if_branch => s_if_branch,
+        if_branchADDR => s_if_branchADDR,
+        if_jump => s_if_jump,
+        if_jumpADDR => s_if_jumpADDR,
+        if_PC4 => s_if_PC4,
+        if_instr => s_if_instr
   );
 
 r_IF_ID: rIF_ID
