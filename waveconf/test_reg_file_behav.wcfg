@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_reg_file_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="test_reg_file" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="4000001fs"></ZoomEndTime>
+      <Cursor1Time time="4000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="102"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/test_reg_file/s_clk1" type="logic">
+      <obj_property name="ElementShortName">s_clk1</obj_property>
+      <obj_property name="ObjectShortName">s_clk1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_clk2" type="logic">
+      <obj_property name="ElementShortName">s_clk2</obj_property>
+      <obj_property name="ObjectShortName">s_clk2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_reset" type="logic">
+      <obj_property name="ElementShortName">s_reset</obj_property>
+      <obj_property name="ObjectShortName">s_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_reg1_addr" type="array">
+      <obj_property name="ElementShortName">s_reg1_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s_reg1_addr[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_reg2_addr" type="array">
+      <obj_property name="ElementShortName">s_reg2_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s_reg2_addr[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_write" type="logic">
+      <obj_property name="ElementShortName">s_write</obj_property>
+      <obj_property name="ObjectShortName">s_write</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_write_addr" type="array">
+      <obj_property name="ElementShortName">s_write_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">s_write_addr[4:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_write_data" type="array">
+      <obj_property name="ElementShortName">s_write_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_write_data[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_reg1" type="array">
+      <obj_property name="ElementShortName">s_reg1[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_reg1[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_reg_file/s_reg2" type="array">
+      <obj_property name="ElementShortName">s_reg2[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_reg2[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+</wave_config>
