@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eIF is
     Port ( 
-        if_clk, if_reset : in STD_LOGIC;
+        if_clk1, if_clk2, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
         if_branchADDR : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
@@ -72,7 +72,7 @@ begin
 
 IF_PC: PC
   port map(
-      pc_clk => if_clk,
+      pc_clk => if_clk1,
       pc_reset => if_reset,
       pc_branch => if_branch,
       pc_branchADDR => if_branchADDR,
@@ -84,7 +84,7 @@ IF_PC: PC
 
  IF_InstrMem: instr_rom
   port map(
-      clka => if_clk,
+      clka => if_clk2,
       ena => '1',
       addra => s_pc(6 downto 2),
       douta => if_instr
