@@ -32,12 +32,39 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity eMEM is
-    Port ( clk : in STD_LOGIC);
+    Port ( 
+        mem_clk1, if_reset : in STD_LOGIC;
+        mem_memADDR : in std_logic_vector (31 downto 0);
+        mem_write : in std_logic_vector (0 downto 0);
+        mem_data_in : in std_logic_vector (31 downto 0);
+        mem_data_out : out std_logic_vector (31 downto 0)
+    );
 end eMEM;
 
 architecture Behavioral of eMEM is
 
+component mem_ram IS
+  PORT (
+    clka : IN STD_LOGIC;
+    ena : IN STD_LOGIC;
+    wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
+    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
+    dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
+    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+  );
+end component;
+
 begin
+
+ MEM_DataMem: mem_ram
+  port map(
+      clka => mem_clk1,
+      ena => '1',
+      wea => "0",
+      addra => mem_memADDR(6 downto 2),
+      dina => mem_data_in,
+      douta => mem_data_out
+  );
 
 
 end Behavioral;
