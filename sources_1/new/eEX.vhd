@@ -61,15 +61,6 @@ component ALU is
   );
 end component;
 
-component ALU_ctrl is
-  port ( 
-    op_code : in std_logic_vector (5 downto 0);
-    funct : in std_logic_vector (5 downto 0);
-    alu_op : out std_logic_vector (2 downto 0);
-    aux : out std_logic
-  );
-end component;
-
 component sum_32bits is
   port (
     a_32 : in std_logic_vector (31 downto 0);
@@ -107,14 +98,6 @@ s_zero <= not ( s_s(0) or s_s(1) or s_s(2) or s_s(3) or s_s(4) or s_s(5) or s_s(
              or s_s(8) or s_s(9) or s_s(10) or s_s(11) or s_s(12) or s_s(13) or s_s(14) or s_s(15)
              or s_s(16) or s_s(17) or s_s(18) or s_s(19) or s_s(20) or s_s(21) or s_s(22) or s_s(23)
              or s_s(24) or s_s(25) or s_s(26) or s_s(27) or s_s(28) or s_s(29) or s_s(30) or s_s(31));
-
-EX_ctrlALU : ALU_ctrl
-  port map (
-    op_code => op_code,
-    funct => inst_low(5 downto 0),
-    alu_op => s_alu_op,
-    aux => s_aux
-  );
 
 -- shift left 2
 s_pc_add <= inst_low(29 downto 0) & "00";
