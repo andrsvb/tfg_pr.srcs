@@ -46,21 +46,23 @@ architecture Behavioral of eMEM is
 component mem_ram IS
   PORT (
     clka : IN STD_LOGIC;
-    ena : IN STD_LOGIC;
-    wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
-    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-    dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+    ena : IN STD_LOGIC;                                 -- enable read & write a
+    wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);              -- write enable a
+    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);            -- address a
+    dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);            -- data in a
+    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)           -- data out a
   );
 end component;
+
+signal s_enable : STD_LOGIC;
 
 begin
 
  MEM_DataMem: mem_ram
   port map(
       clka => mem_clk1,
-      ena => '1',
-      wea => "0",
+      ena => s_enable,
+      wea => mem_write,
       addra => mem_memADDR(6 downto 2),
       dina => mem_data_in,
       douta => mem_data_out

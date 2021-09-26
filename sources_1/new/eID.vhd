@@ -38,7 +38,15 @@ entity eID is
         id_instr : in std_logic_vector (31 downto 0);
         id_write_data : in std_logic_vector (31 downto 0);
         id_reg1 : out std_logic_vector (31 downto 0);
-        id_reg2 : out std_logic_vector (31 downto 0)
+        id_reg2 : out std_logic_vector (31 downto 0);
+        id_regdst : out std_logic;
+        id_jump : out std_logic;
+        id_branch : out std_logic;
+        id_memread : out std_logic;
+        id_memwrite : out std_logic_vector (0 downto 0);
+        id_aluop : out std_logic_vector (3 downto 0);
+        id_alusrc : out std_logic;
+        id_regwrite : out std_logic
     );
 end eID;
 
@@ -54,6 +62,21 @@ component reg_file is
         rf_write_data : in std_logic_vector (31 downto 0);
         rf_reg1 : out std_logic_vector (31 downto 0);
         rf_reg2 : out std_logic_vector (31 downto 0)
+    );
+end component;
+
+component control_unit is
+    Port ( 
+        cu_opcode : in std_logic_vector (5 downto 0);
+        cu_funct : in std_logic_vector (5 downto 0);
+        cu_regdst : out std_logic;
+        cu_jump : out std_logic;
+        cu_branch : out std_logic;
+        cu_memread : out std_logic;
+        cu_memwrite : out std_logic_vector (0 downto 0);
+        cu_aluop : out std_logic_vector (3 downto 0);
+        cu_alusrc : out std_logic;
+        cu_regwrite : out std_logic
     );
 end component;
 
@@ -77,5 +100,18 @@ regs : reg_file
         rf_reg2 => id_reg2
     );
 
+ctrl_unit : control_unit
+    port map (
+        cu_opcode => id_instr(31 downto 26),
+        cu_funct => id_instr(5 downto 0),
+        cu_regdst => id_regdst,
+        cu_jump => id_jump,
+        cu_branch => id_branch,
+        cu_memread => id_memread,
+        cu_memwrite => id_memwrite,
+        cu_aluop => id_aluop,
+        cu_alusrc => id_alusrc,
+        cu_regwrite => id_regwrite
+    );
 
 end Behavioral;

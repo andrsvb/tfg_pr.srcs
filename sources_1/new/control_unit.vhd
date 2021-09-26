@@ -33,16 +33,16 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity control_unit is
     Port ( 
-        opcode : in std_logic_vector (4 downto 0);
-        regdst : out std_logic;
-        jump : out std_logic;
-        branch : out std_logic;
-        memread : out std_logic;
-        memtoreg : out std_logic;
-        aluop : out std_logic_vector (3 downto 0);
-        memwrite : out std_logic_vector (0 downto 0);
-        alusrc : out std_logic;
-        regwrite : out std_logic
+        cu_opcode : in std_logic_vector (5 downto 0);
+        cu_funct : in std_logic_vector (5 downto 0);
+        cu_regdst : out std_logic;                             -- para indicar en que registro se escribe, rd (0) o rt (1)
+        cu_jump : out std_logic;                               -- para operaciones de salto
+        cu_branch : out std_logic;                             -- para operaciones de branch
+        cu_memread : out std_logic;                            -- para leer de memoria
+        cu_memwrite : out std_logic_vector (0 downto 0);       -- para escribir en memoria
+        cu_aluop : out std_logic_vector (3 downto 0);          -- para indicar qué operacion que ejecuta la ALU
+        cu_alusrc : out std_logic;                             -- origen del segundo parámetro de la ALU, rt (0) o imm (1)
+        cu_regwrite : out std_logic                            -- para escribir en registro
     );
 end control_unit;
 
@@ -50,95 +50,40 @@ architecture Behavioral of control_unit is
 
 begin
 
---    regdst: 
---         en qué registro se va a escribir:
---           - instr (20..16)
---           - instr (15..11)
---    jump: 
---         si es una operacion de salto
---    branch: 
---         si es una operacion de branch
---    memread: 
---         para leer de memoria
---    memtoreg: 
---         de donde se sacan los datos a escribir en registro:
---           - resultado de la ALU
---           - memoria
---    aluop: 
---         operacion a realizar por la ALU:
---           - and/nor
---           - or
---           - add/sub
---           - slt
---           - sll
---           - srl/sra
---    memwrite: 
---         para escribir en memoria
---         tiene que ser un bus de 1 bit por la ip
---    alusrc: 
---         de donde saca el segundo operando la ALU:
---           - registro
---           - immediate / sign extend
---    regwrite: 
---         para escribir en registro
+cu_regdst <= '0' when cu_opcode = "000000" else '1';
 
---    R format
---        opcode rs rt rd shamt funct
---             reg_source (operacion) reg_target => reg_destination
---             opcode = 0, funct => operacion
---             shamt : shift amount
---    I format
---        opcode rs rt imm
---             reg_source (operacion) reg_target => reg_destination
---    J format
---        opcode pseudoaddr
-        
+cu_jump <= '1' when cu_opcode = "000010" or (cu_opcode = "000000" and cu_funct = "001000") else '0';
 
--- hacer                 instruction                         type        opcode (hex)    funct (hex)
---  o      add	Add	 	                                      R             0x00	          0x20	           
---         addu	Add Unsigned	                              R             0x00	          0x21	           
---  o      and	Bitwise AND		                              R             0x00	          0x24	           
---         div	Divide		                                  R             0x00	          0x1A	           
---         divu	Unsigned Divide		                          R             0x00	          0x1B	           
---         jalr	Jump and Link Register		                  J             0x00	          0x09	           
---  o      jr	Jump to Address in Register		              R             0x00	          0x08	           
---         mfhi	Move from HI Register		                  R             0x00	          0x10	           
---         mthi	Move to HI Register		                      R             0x00	          0x11	           
---         mflo	Move from LO Register		                  R             0x00	          0x12	           
---         mtlo	Move to LO Register		                      R             0x00	          0x13	           
---         mult	Multiply		                              R             0x00	          0x18	           
---         multu	Unsigned Multiply		                  R             0x00	          0x19	           
---  o      nor	Bitwise NOR (NOT-OR)		                  R             0x00	          0x27	           
---  o      xor	Bitwise XOR (Exclusive-OR)		              R             0x00	          0x26	           
---  o      or	Bitwise OR		                              R             0x00	          0x25	           
---  o      slt	Set to 1 if Less Than		                  R             0x00	          0x2A	           
---         sltu	Set to 1 if Less Than Unsigned	              R           	0x00	          0x2B	           
---  o      sll	Logical Shift Left		                      R             0x00	          0x00	           
---  o      srl	Logical Shift Right (0-extended)	          R	            0x00	          0x02	           
---  o      sra	Arithmetic Shift Right (sign-extended)	      R	            0x00	          0x03	           
---  o      sub	Subtract		                              R             0x00	          0x22	           
---         subu	Unsigned Subtract		                      R             0x00	          0x23	           
---  o      j	Jump to Address		                          J             0x02	           NA	           
---         jal	Jump and Link		                          J             0x03	           NA	           
---  o      beq	Branch if Equal		                          I             0x04	           NA	           
---  o      bne	Branch if Not Equal		                      I             0x05	           NA	           
---         blez	Branch if Less Than or Equal to Zero	      I	            0x06	           NA	           
---         bgtz	Branch on Greater Than Zero		              I             0x07	           NA	           
---  o      addi	Add Immediate	I	                          I             0x08	           NA	           
---         addiu	Add Unsigned Immediate		              I             0x09	           NA	           
---  o      slti	Set to 1 if Less Than Immediate		          I             0x0A	           NA	           
---         sltiu	Set to 1 if Less Than U. Imm	          I	            0x0B	           NA	           
---  o      andi	Bitwise AND Immediate		                  I             0x0C	           NA	           
---  o      ori	Bitwise OR Immediate		                  I             0x0D	           NA	           
---         lui	Load Upper Immediate		                  I             0x0F	           NA	           
---         mfc0	Move from Coprocessor 0		                  R             0x10	           NA	           
---         lb	Load Byte		                              I             0x20	           NA	           
---  o      lw	Load Word		                              I             0x23	           NA	           
---         lbu	Load Byte Unsigned		                      I             0x24	           NA	           
---         lhu	Load Halfword Unsigned		                  I             0x25	           NA	           
---         sb	Store Byte		                              I             0x28	           NA	           
---         sh	Store Halfword		                          I             0x29	           NA	           
---  o      sw	Store Word		                              I             0x2B	           NA	           
+cu_branch <= '1' when cu_opcode = "000100" or cu_opcode = "000101" else '0';
 
+cu_memread <= '1' when cu_opcode = "100011" else '0';
+
+cu_memwrite <= "1" when cu_opcode = "100011" else "0";
+
+cu_alusrc <= '1' when cu_opcode = "001100" or cu_opcode = "001101" or cu_opcode = "001110" or cu_opcode = "001000" 
+                   or cu_opcode = "001010" or cu_opcode = "100011" or cu_opcode = "101011" else '0';
+
+cu_regwrite <= '1' when not(cu_opcode = "101011" or cu_opcode = "000010" or (cu_opcode = "000000" and cu_funct = "001000")) else '0';
+
+cu_aluop <= "0000" when cu_opcode = "001100" or (cu_opcode = "000000" and cu_funct = "100100") else
+            "1000" when cu_opcode = "000000" and cu_funct = "100111" else
+            "0001" when cu_opcode = "001101" or (cu_opcode = "000000" and cu_funct = "100101") else
+            "0010" when cu_opcode = "001000" or cu_opcode = "100011" or cu_opcode = "101011" or (cu_opcode = "000000" and cu_funct = "100000") else
+            "1010" when cu_opcode = "000100" or cu_opcode = "000101" or (cu_opcode = "000000" and cu_funct = "100010") else
+            "0011" when cu_opcode = "001010" or (cu_opcode = "000000" and cu_funct = "101010") else
+            "0100" when cu_opcode = "001110" or (cu_opcode = "000000" and cu_funct = "100110") else
+            "0101" when cu_opcode = "000000" and cu_funct = "000000" else
+            "0110" when cu_opcode = "000000" and cu_funct = "000010" else
+            "1110" when cu_opcode = "000000" and cu_funct = "000011" else
+            "0111";
+
+-- and: 0-000  -- nor: 1-000
+-- or:  0-001
+-- add: 0-010  -- sub: 1-010
+-- slt: 0-011
+-- xor: 0-100
+-- sll: 0-101
+-- srl: 0-110  -- sra: 1-110
+-- nop: 0-111
 
 end Behavioral;
