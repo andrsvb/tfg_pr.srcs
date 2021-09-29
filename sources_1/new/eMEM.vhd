@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity eMEM is
     Port ( 
         mem_clk1, if_reset : in STD_LOGIC;
-        mem_memADDR : in std_logic_vector (31 downto 0);
+        mem_addr : in std_logic_vector (31 downto 0);
         mem_write : in std_logic_vector (0 downto 0);
         mem_data_in : in std_logic_vector (31 downto 0);
         mem_data_out : out std_logic_vector (31 downto 0)
@@ -63,7 +63,7 @@ begin
       clka => mem_clk1,
       ena => s_enable,
       wea => mem_write,
-      addra => mem_memADDR(6 downto 2),
+      addra => mem_addr(6 downto 2),
       dina => mem_data_in,
       douta => mem_data_out
   );

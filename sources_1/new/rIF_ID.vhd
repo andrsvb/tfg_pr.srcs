@@ -34,10 +34,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity rIF_ID is
     Port (
         fd_clk, fd_reset : in STD_LOGIC;
-        in_PC4 : in std_logic_vector (31 downto 0);
-        in_instr : in std_logic_vector (31 downto 0);
-        out_PC4 : out std_logic_vector (31 downto 0);
-        out_instr : out std_logic_vector (31 downto 0)
+        fd_PC4_in : in std_logic_vector (31 downto 0);
+        fd_instr_in : in std_logic_vector (31 downto 0);
+        fd_PC4_out : out std_logic_vector (31 downto 0);
+        fd_instr_out : out std_logic_vector (31 downto 0)
     );
 end rIF_ID;
 
@@ -48,11 +48,11 @@ begin
 process (fd_clk, fd_reset)
 begin
     if (fd_reset = '1') then
-        out_PC4 <= x"00000000";
-        out_instr <= x"00000000";
+        fd_PC4_out <= x"00000000";
+        fd_instr_out <= x"00000000";
     elsif (fd_clk'event and fd_clk = '1') then
-        out_PC4 <= in_PC4;
-        out_instr <= in_instr;
+        fd_PC4_out <= fd_PC4_in;
+        fd_instr_out <= fd_instr_in;
     end if;
 end process;
 
