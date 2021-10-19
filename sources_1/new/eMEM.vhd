@@ -37,7 +37,13 @@ entity eMEM is
         mem_addr : in std_logic_vector (31 downto 0);
         mem_write : in std_logic_vector (0 downto 0);
         mem_data_in : in std_logic_vector (31 downto 0);
-        mem_data_out : out std_logic_vector (31 downto 0)
+        mem_data_out : out std_logic_vector (31 downto 0);
+                    -- señal que indica de que datos escribir (ALU / memoria)
+        mem_regsrc : in std_logic;
+                    -- resultado de la ALU
+        mem_sALU : in std_logic_vector (31 downto 0);
+                    -- datos a escribir en los registros
+        mem_regw_data : out std_logic_vector (31 downto 0)
     );
 end eMEM;
 
@@ -55,6 +61,7 @@ component mem_ram IS
 end component;
 
 signal s_enable : STD_LOGIC;
+signal s_mem_data_out : std_logic_vector (31 downto 0);
 
 begin
 
@@ -65,8 +72,10 @@ begin
       wea => mem_write,
       addra => mem_addr(6 downto 2),
       dina => mem_data_in,
-      douta => mem_data_out
+      douta => s_mem_data_out
   );
 
+-- escoge el origen de los datos a escribir en los registros
+mem_regw_data <= s_mem_data_out when mem_regsrc = '1' else mem_sALU;
 
 end Behavioral;

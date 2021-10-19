@@ -53,13 +53,13 @@ begin
 
 cu_regdst <= '0' when cu_opcode = "000000" else '1';
 
-cu_jump <= '1' when cu_opcode = "000010" or (cu_opcode = "000000" and cu_funct = "001000") else '0';
+cu_jump <= '1' when cu_opcode = "000010" else '0';
 
-cu_branch <= '1' when cu_opcode = "000100" or cu_opcode = "000101" else '0';
+cu_branch <= '1' when cu_opcode = "000100" else '0';
 
 cu_memread <= '1' when cu_opcode = "100011" else '0';
 
-cu_memwrite <= "1" when cu_opcode = "100011" else "0";
+cu_memwrite <= "1" when cu_opcode = "101011" else "0";
 
 cu_regsrc <= '1' when cu_opcode = "100011" else '0';
 

@@ -67,8 +67,13 @@ sum0 : sum_1bit
   );
 	
 gen_sum : for i in 1 to 30 generate
-  sum_x : sum_1bit port map
-    (a_32(i), b_32(i), c_aux(i-1), s_32(i), c_aux(i));
+  sum_x : sum_1bit port map(
+    a_1 => a_32(i),
+    b_1 => b_32(i),
+    c_in_1 => c_aux(i-1),
+    s_1 => s_32(i),
+    c_out_1 => c_aux(i)
+  );
 end generate;
 
 sum31 : sum_1bit 

@@ -35,10 +35,9 @@ entity PC is
     Port ( 
         pc_clk, pc_reset : in STD_LOGIC;
         pc_branch : in std_logic;
-        pc_branchADDR : in std_logic_vector (31 downto 0);
+        pc_branch_addr : in std_logic_vector (31 downto 0);
         pc_jump : in std_logic;
-        pc_jumpADDR : in std_logic_vector (31 downto 0);
-        pc_PC4 : out std_logic_vector (31 downto 0);
+        pc_jump_addr : in std_logic_vector (31 downto 0);
         pc_PC : out std_logic_vector (31 downto 0)
     );
 end PC;
@@ -62,7 +61,6 @@ signal s_PC4 : std_logic_vector (31 downto 0);
 begin
 
 pc_PC <= s_PC;
-pc_PC4 <= s_PC4;
 
 sumPC4 : sum_32bits
   port map(
@@ -72,7 +70,7 @@ sumPC4 : sum_32bits
     s_32 => s_PC4
   );
 
-s_nextPC <= pc_jumpADDR when (pc_jump = '1') else pc_branchADDR when (pc_branch = '1') else s_PC4;
+s_nextPC <= pc_jump_addr when (pc_jump = '1') else pc_branch_addr when (pc_branch = '1') else s_PC4;
 
 process (pc_clk, pc_reset)
 begin

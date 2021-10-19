@@ -34,8 +34,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity reg_file is
     Port ( 
         rf_clk1, rf_clk2, rf_reset : in STD_LOGIC;
-        rf_reg1_addr : in std_logic_vector (4 downto 0);
-        rf_reg2_addr : in std_logic_vector (4 downto 0);
+        rf_rs_addr : in std_logic_vector (4 downto 0);
+        rf_rt_addr : in std_logic_vector (4 downto 0);
         rf_write : in std_logic;
         rf_write_addr : in std_logic_vector (4 downto 0);
         rf_write_data : in std_logic_vector (31 downto 0);
@@ -58,27 +58,27 @@ signal s_reg : reg := (x"00000000", x"00000001", x"00000002", x"00000003", x"000
                        x"00000008", x"00000009", x"0000000A", x"0000000B", x"0000000C", x"0000000D", x"0000000E", x"0000000F",
                        x"00000010", x"00000011", x"00000012", x"00000013", x"00000014", x"00000015", x"00000016", x"00000017",
                        x"00000018", x"00000019", x"0000001A", x"0000001B", x"0000001C", x"0000001D", x"0000001E", x"0000001F");
-signal s_reg1 : std_logic_vector (31 downto 0);
-signal s_reg2 : std_logic_vector (31 downto 0);
-signal sel_reg1 : integer range 0 to 31;
-signal sel_reg2 : integer range 0 to 31;
+signal s_rs : std_logic_vector (31 downto 0);
+signal s_rt : std_logic_vector (31 downto 0);
+signal sel_rs : integer range 0 to 31;
+signal sel_rt : integer range 0 to 31;
 signal sel_write : integer range 0 to 31;
 
 begin
 
 decode_reg1: decoder32 port map (
-      bits => rf_reg1_addr,
-      int => sel_reg1
+      bits => rf_rs_addr,
+      int => sel_rs
   );
 
-s_reg1 <= s_reg(sel_reg1);
+s_rs <= s_reg(sel_rs);
 
 decode_reg2: decoder32 port map (
-      bits => rf_reg2_addr,
-      int => sel_reg2
+      bits => rf_rt_addr,
+      int => sel_rt
   );
 
-s_reg2 <= s_reg(sel_reg2);
+s_rt <= s_reg(sel_rt);
 
 decode_write: decoder32 port map (
       bits => rf_write_addr,
@@ -99,8 +99,8 @@ begin
             s_reg(sel_write) <= rf_write_data;
         end if;
         if (rf_clk2'event and rf_clk2 = '1') then
-            rf_rs <= s_reg1;
-            rf_rt <= s_reg2;
+            rf_rs <= s_rs;
+            rf_rt <= s_rt;
         end if;
     end if;
 end process;

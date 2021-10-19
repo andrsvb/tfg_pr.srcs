@@ -37,6 +37,8 @@ entity eID_WB is
         idwb_clk1, idwb_clk2, idwb_reset : in STD_LOGIC;
                     -- ID instruccion a decodificar
         id_instr : in std_logic_vector (31 downto 0);
+                    -- ID contador de programa +4
+        id_PC : in std_logic_vector (31 downto 0);
                     -- ID registros leidos
         id_rs : out std_logic_vector (31 downto 0);
         id_rt : out std_logic_vector (31 downto 0);
@@ -44,6 +46,8 @@ entity eID_WB is
         id_imm : out std_logic_vector (31 downto 0);
                     -- ID direccion de registro a escribir (o no) en WB
         id_rwrite_addr : out std_logic_vector (4 downto 0);
+                    -- ID direccion de salto
+        id_jump_addr : out std_logic_vector (31 downto 0);
                     -- ID señales de control
         id_jump : out std_logic;
         id_branch : out std_logic;
@@ -55,13 +59,10 @@ entity eID_WB is
         id_regwrite : out std_logic;
                     -- WB señal para escribir o no en el registro
         wb_regwrite : in std_logic;
-                    -- WB direccion del registro a escribir
+                    -- WB direccion del registro en el que escribir
         wb_rwrite_addr : in std_logic_vector (4 downto 0);
-                    -- WB señal que indica de que datos escribir (ALU / memoria)
-        wb_regsrc : in std_logic;
-                    -- WB datos a ecsoger para escribir en el registro
-        wb_alu : in std_logic_vector (31 downto 0);
-        wb_mem : in std_logic_vector (31 downto 0)
+                    -- WB datos a escribir en el registro
+        wb_rwrite_data : in std_logic_vector (31 downto 0)
     );
 end eID_WB;
 
@@ -70,8 +71,8 @@ architecture Behavioral of eID_WB is
 component reg_file is
     Port ( 
         rf_clk1, rf_clk2, rf_reset : in STD_LOGIC;
-        rf_reg1_addr : in std_logic_vector (4 downto 0);
-        rf_reg2_addr : in std_logic_vector (4 downto 0);
+        rf_rs_addr : in std_logic_vector (4 downto 0);
+        rf_rt_addr : in std_logic_vector (4 downto 0);
         rf_write : in std_logic;
         rf_write_addr : in std_logic_vector (4 downto 0);
         rf_write_data : in std_logic_vector (31 downto 0);
@@ -101,16 +102,13 @@ signal s_regdst : std_logic;
 
 begin
 
-        -- segun la señal wb_regsrc se selecciona para escribir en el registro o la salida de la ALU o los datos leidos de memoria
-s_write_data <= wb_alu when wb_regsrc = '0' else wb_mem;
-
 regs : reg_file
     Port map (
         rf_clk1 => idwb_clk1,
         rf_clk2 => idwb_clk2,
         rf_reset => idwb_reset,
-        rf_reg1_addr => id_instr(25 downto 21),                     -- direccion del registro rs
-        rf_reg2_addr => id_instr(20 downto 16),                     -- direccion del registro rt
+        rf_rs_addr => id_instr(25 downto 21),
+        rf_rt_addr => id_instr(20 downto 16),
         rf_write => wb_regwrite,
         rf_write_addr => wb_rwrite_addr,
         rf_write_data => s_write_data,
@@ -135,6 +133,9 @@ ctrl_unit : control_unit
 
         -- segun la señal s_regdst se escribira o en el registro rd o rt
 id_rwrite_addr <= id_instr(15 downto 11) when s_regdst = '0' else id_instr(20 downto 16);
+
+
+id_jump_addr <= id_pc(31 downto 28) & id_instr(25 downto 0) & "00";
 
         -- valor inmediato:
                 -- primeros 16 bits 0-extended

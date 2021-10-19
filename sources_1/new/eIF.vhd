@@ -35,10 +35,10 @@ entity eIF is
     Port ( 
         if_clk1, if_clk2, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
-        if_branchADDR : in std_logic_vector (31 downto 0);
+        if_branch_addr : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
-        if_jumpADDR : in std_logic_vector (31 downto 0);
-        if_PC4 : out std_logic_vector (31 downto 0);
+        if_jump_addr : in std_logic_vector (31 downto 0);
+        if_PC : out std_logic_vector (31 downto 0);
         if_instr : out std_logic_vector (31 downto 0)
     );
 end eIF;
@@ -49,9 +49,9 @@ component PC is
     Port ( 
         pc_clk, pc_reset : in STD_LOGIC;
         pc_branch : in std_logic;
-        pc_branchADDR : in std_logic_vector (31 downto 0);
+        pc_branch_addr : in std_logic_vector (31 downto 0);
         pc_jump : in std_logic;
-        pc_jumpADDR : in std_logic_vector (31 downto 0);
+        pc_jump_addr : in std_logic_vector (31 downto 0);
         pc_PC4 : out std_logic_vector (31 downto 0);
         pc_PC : out std_logic_vector (31 downto 0)
     );
@@ -70,17 +70,18 @@ signal s_pc: std_logic_vector (31 downto 0);
 
 begin
 
-IF_PC: PC
+IF_ProgramCounter: PC
   port map(
       pc_clk => if_clk1,
       pc_reset => if_reset,
       pc_branch => if_branch,
-      pc_branchADDR => if_branchADDR,
+      pc_branch_addr => if_branch_addr,
       pc_jump => if_jump,
-      pc_jumpADDR => if_jumpADDR,
-      pc_PC4 => if_pc4,
+      pc_jump_addr => if_jump_addr,
       pc_PC => s_pc
   );
+
+if_pc <= s_pc;
 
  IF_InstrMem: instr_rom
   port map(

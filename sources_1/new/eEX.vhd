@@ -33,17 +33,26 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eEX is
   port (
-    -- reg0
-    op1 : in std_logic_vector (31 downto 0);
-    -- reg1
-    op2 : in std_logic_vector (31 downto 0);
-    -- program counter
-    pc : in std_logic_vector (31 downto 0);
-    -- branch target / funct field
-    inst_low : in std_logic_vector (31 downto 0);
-    op_code : in std_logic_vector (5 downto 0);
-    branch_target : out std_logic_vector (31 downto 0);
-    sal : out std_logic_vector (31 downto 0)
+        -- clock and reset signals
+    ex_clk1, ex_clk2, ex_reset : in STD_LOGIC;
+        -- program counter (for branch)
+    ex_pc : in std_logic_vector (31 downto 0);
+        -- register data
+    ex_rs : in std_logic_vector (31 downto 0);
+    ex_rt : in std_logic_vector (31 downto 0);
+        -- immediate value
+    ex_imm : in std_logic_vector (31 downto 0);
+        -- control signal for ALU operation
+    ex_aluop : in std_logic_vector (3 downto 0);
+        -- control signal for ALU's second input's source
+    ex_alusrc : in std_logic;
+        -- control signal for branch operations, in : branch op ; out : take branch
+    ex_branch_in : in std_logic;
+    ex_branch_out : out std_logic;
+        -- address to branch program counter to
+    ex_branch_addr : out std_logic_vector (31 downto 0);
+        -- result of the ALU operation
+    ex_sALU : out std_logic_vector (31 downto 0)
   );
 end eEX;
 
@@ -70,45 +79,49 @@ component sum_32bits is
   );
 end component;
 
-signal s_alu_op : std_logic_vector (2 downto 0);
-signal s_a : std_logic_vector (31 downto 0);
 signal s_b : std_logic_vector (31 downto 0);
 signal s_aux : std_logic;
-signal s_s : std_logic_vector (31 downto 0);
+signal s_sALU : std_logic_vector (31 downto 0);
 signal s_overflow : std_logic;
 signal s_c_out : std_logic;
 signal s_zero : std_logic;
+signal s_branch : std_logic;
 signal s_pc_add : std_logic_vector (31 downto 0);
 
 begin
 
+s_b <= ex_imm when ex_alusrc = '1' else ex_rt;
+
 EX_ALU : ALU
   port map (
-    a => s_a,
+    a => ex_rs,
     b => s_b,
-    alu_op => s_alu_op,
-    aux => s_aux,
-    s => s_s,
+    alu_op => ex_aluop(2 downto 0),
+    aux => ex_aluop(0),
+    s => s_sALU,
     overflow => s_overflow,
     c_out => s_c_out
   );
 
--- s_zero <= '1' when s_s = "00000000000000000000000000000000" else '0';
-s_zero <= not ( s_s(0) or s_s(1) or s_s(2) or s_s(3) or s_s(4) or s_s(5) or s_s(6) or s_s(7)
-             or s_s(8) or s_s(9) or s_s(10) or s_s(11) or s_s(12) or s_s(13) or s_s(14) or s_s(15)
-             or s_s(16) or s_s(17) or s_s(18) or s_s(19) or s_s(20) or s_s(21) or s_s(22) or s_s(23)
-             or s_s(24) or s_s(25) or s_s(26) or s_s(27) or s_s(28) or s_s(29) or s_s(30) or s_s(31));
+ex_sALU <= s_sALU;
 
--- shift left 2
-s_pc_add <= inst_low(29 downto 0) & "00";
+-- BRANCH control:
+    
+    -- decides if it takes a branch (only implemented branch equal)
+    
+s_zero <= '1' when s_sALU = x"00000000" else '0';
+ex_branch_out <= ex_branch_in and s_zero;
 
--- pc + branch => target
+    -- branch address : PC + (offset & 00)
+    
+s_pc_add <= ex_imm(29 downto 0) & "00";
+
 suma_branch : sum_32bits
   port map(
-    a_32 => pc,
+    a_32 => ex_pc,
     b_32 => s_pc_add,
     c_in_32 => '0',
-    s_32 => branch_target
+    s_32 => ex_branch_addr
   );
 
 end Behavioral;
