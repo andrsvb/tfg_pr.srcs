@@ -33,10 +33,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity rID_EX is
     Port (
+        -- IN
                 -- señal de reloj y reset
         dex_clk, dex_reset : in STD_LOGIC;
-                -- datos recibidos de la etapa id
+                -- contador de programa, recibido del registro if_id
         dex_PC_in : in std_logic_vector (31 downto 0);
+                -- datos recibidos de la etapa id
         dex_rs_in : in std_logic_vector (31 downto 0);
         dex_rt_in : in std_logic_vector (31 downto 0);
         dex_imm_in : in std_logic_vector (31 downto 0);
@@ -50,18 +52,20 @@ entity rID_EX is
         dex_aluop_in : in std_logic_vector (3 downto 0);
         dex_alusrc_in : in std_logic;
         dex_regwrite_in : in std_logic;
+        -- OUT
                 -- datos enviados a etapa ex
         dex_PC_out : out std_logic_vector (31 downto 0);
         dex_rs_out : out std_logic_vector (31 downto 0);
-        dex_rt_out : out std_logic_vector (31 downto 0);
+        dex_rt_out : out std_logic_vector (31 downto 0);        -- tambien se envia al registro ex_mem
         dex_imm_out : out std_logic_vector (31 downto 0);
-        dex_rwrite_addr_out : out std_logic_vector (4 downto 0);
         dex_branch_out : out std_logic;
+        dex_aluop_out : out std_logic_vector (3 downto 0);
+        dex_alusrc_out : out std_logic;
+                -- datos enviados a registro ex_mem
+        dex_rwrite_addr_out : out std_logic_vector (4 downto 0);
         dex_memread_out : out std_logic;
         dex_memwrite_out : out std_logic_vector (0 downto 0);
         dex_regsrc_out : out std_logic;
-        dex_aluop_out : out std_logic_vector (3 downto 0);
-        dex_alusrc_out : out std_logic;
         dex_regwrite_out : out std_logic;
                 -- datos enviados a etapa if
         dex_jump_out : out std_logic;
@@ -105,6 +109,5 @@ begin
         dex_regwrite_out <= dex_regwrite_in;
     end if;
 end process;
-
 
 end Behavioral;
