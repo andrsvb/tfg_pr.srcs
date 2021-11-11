@@ -40,12 +40,12 @@ entity eMEM is
         mem_read : in std_logic;
                     -- datos a escribir en memoria, del registro rt
         mem_rt : in std_logic_vector (31 downto 0);
-                    -- señal que indica de que datos escribir (ALU / memoria)
-        mem_regsrc : in std_logic;
                     -- resultado de la ALU:
                         -- sALU(6..2): direccion de memoria que escribir/leer
                         -- segun el valor de regsrc, se lleva a mem_regw_data
         mem_sALU : in std_logic_vector (31 downto 0);
+                    -- señal que indica de que datos escribir (ALU / memoria)
+        mem_regsrc : in std_logic;
                     -- datos a escribir en los registros
         mem_regw_data : out std_logic_vector (31 downto 0)
     );
@@ -64,10 +64,13 @@ component mem_ram IS
   );
 end component;
 
-signal s_enable : STD_LOGIC;
+signal s_enable : std_logic;
 signal s_mem_data_out : std_logic_vector (31 downto 0);
 
 begin
+
+-- señal enable de escritura o lectura
+s_enable <= mem_write(0) or mem_read;
 
  MEM_DataMem: mem_ram
   port map(

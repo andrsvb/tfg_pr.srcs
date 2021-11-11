@@ -52,7 +52,6 @@ component PC is
         pc_branch_addr : in std_logic_vector (31 downto 0);
         pc_jump : in std_logic;
         pc_jump_addr : in std_logic_vector (31 downto 0);
-        pc_PC4 : out std_logic_vector (31 downto 0);
         pc_PC : out std_logic_vector (31 downto 0)
     );
 end component;

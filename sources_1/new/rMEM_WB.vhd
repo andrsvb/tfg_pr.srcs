@@ -32,12 +32,39 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity rMEM_WB is
-    Port ( clk : in STD_LOGIC);
+    Port (
+        -- IN
+                -- señal de reloj y reset
+        mw_clk, mw_reset : in STD_LOGIC;
+                -- datos recibidos de la etapa mem
+        mw_regw_data_in : in std_logic_vector (31 downto 0);
+                -- datos recibidos del registro ex_mem
+        mw_rwrite_addr_in : in std_logic_vector (4 downto 0);
+        mw_regwrite_in : in std_logic;
+        -- OUT
+                -- datos enviados a etaba wb
+        mw_regw_data_out : out std_logic_vector (31 downto 0);
+        mw_rwrite_addr_out : out std_logic_vector (4 downto 0);
+        mw_regwrite_out : out std_logic
+    );
 end rMEM_WB;
 
 architecture Behavioral of rMEM_WB is
 
 begin
 
+process (mw_clk, mw_reset)
+begin
+    if (mw_reset = '1') then
+        mw_regw_data_out <= x"00000000";
+        mw_rwrite_addr_out <= "0000";
+        mw_regwrite_out <= '0';
+        
+    elsif (mw_clk'event and mw_clk = '1') then
+        mw_regw_data_out <= mw_regw_data_in;
+        mw_rwrite_addr_out <= mw_rwrite_addr_in;
+        mw_regwrite_out <= mw_regwrite_in;
+    end if;
+end process;
 
 end Behavioral;
