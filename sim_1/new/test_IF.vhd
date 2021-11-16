@@ -41,10 +41,10 @@ component eIF IS
   PORT (
         if_clk1, if_clk2, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
-        if_branchADDR : in std_logic_vector (31 downto 0);
+        if_branch_addr : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
-        if_jumpADDR : in std_logic_vector (31 downto 0);
-        if_PC4 : out std_logic_vector (31 downto 0);
+        if_jump_addr : in std_logic_vector (31 downto 0);
+        if_PC : out std_logic_vector (31 downto 0);
         if_instr : out std_logic_vector (31 downto 0)
   );
 end component;
@@ -53,9 +53,9 @@ signal s_clk1 : std_logic;
 signal s_clk2 : std_logic;
 signal s_reset : std_logic;
 signal s_branch : std_logic;
-signal s_branchADDR : std_logic_vector (31 downto 0);
+signal s_branch_addr : std_logic_vector (31 downto 0);
 signal s_jump : std_logic;
-signal s_jumpADDR : std_logic_vector (31 downto 0);
+signal s_jump_addr : std_logic_vector (31 downto 0);
 signal s_PC4 : std_logic_vector (31 downto 0);
 signal s_PC4_aux : std_logic_vector (4 downto 0);
 signal s_instr : std_logic_vector (31 downto 0);
@@ -68,10 +68,10 @@ e_IF: eIF
         if_clk2 => s_clk2,
         if_reset => s_reset,
         if_branch => s_branch,
-        if_branchADDR => s_branchADDR,
+        if_branch_addr => s_branch_addr,
         if_jump => s_jump,
-        if_jumpADDR => s_jumpADDR,
-        if_PC4 => s_PC4,
+        if_jump_addr => s_jump_addr,
+        if_PC => s_PC4,
         if_instr => s_instr
   );
   
@@ -87,9 +87,9 @@ e_IF: eIF
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_branch <= '0';
-    s_branchADDR <= x"00000028";       -- 25 bits que no usa .. 10/d .. 2 bits que no usa
+    s_branch_addr <= x"00000028";       -- 25 bits que no usa .. 10/d .. 2 bits que no usa
     s_jump <= '0';
-    s_jumpADDR <= x"00000050";         -- 25 bits que no usa .. 20/d .. 2 bits que no usa
+    s_jump_addr <= x"00000050";         -- 25 bits que no usa .. 20/d .. 2 bits que no usa
     wait for 100 ns;
 
 --            NORMAL

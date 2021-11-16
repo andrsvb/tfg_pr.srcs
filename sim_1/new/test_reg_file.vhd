@@ -40,13 +40,13 @@ architecture Behavioral of test_reg_file is
 component reg_file is
     Port ( 
         rf_clk1, rf_clk2, rf_reset : in STD_LOGIC;
-        rf_reg1_addr : in std_logic_vector (4 downto 0);
-        rf_reg2_addr : in std_logic_vector (4 downto 0);
+        rf_rs_addr : in std_logic_vector (4 downto 0);
+        rf_rt_addr : in std_logic_vector (4 downto 0);
         rf_write : in std_logic;
         rf_write_addr : in std_logic_vector (4 downto 0);
         rf_write_data : in std_logic_vector (31 downto 0);
-        rf_reg1 : out std_logic_vector (31 downto 0);
-        rf_reg2 : out std_logic_vector (31 downto 0)
+        rf_rs : out std_logic_vector (31 downto 0);
+        rf_rt : out std_logic_vector (31 downto 0)
     );
 end component;
 
@@ -68,13 +68,13 @@ regs : reg_file
         rf_clk1 => s_clk1,
         rf_clk2 => s_clk2,
         rf_reset => s_reset,
-        rf_reg1_addr => s_reg1_addr,
-        rf_reg2_addr => s_reg2_addr,
+        rf_rs_addr => s_reg1_addr,
+        rf_rt_addr => s_reg2_addr,
         rf_write => s_write,
         rf_write_addr => s_write_addr,
         rf_write_data => s_write_data,
-        rf_reg1 => s_reg1,
-        rf_reg2 => s_reg2
+        rf_rs => s_reg1,
+        rf_rt => s_reg2
     );
   
   t_process : process
@@ -90,7 +90,7 @@ regs : reg_file
     s_reg2_addr <= "00001";
     s_write <= '0';
     s_write_addr <= "00001";
-    s_write_data <= x"00000000";
+    s_write_data <= x"10000000";
     wait for 100 ns;
     s_reset <= '0';
     wait for 100 ns;
@@ -151,7 +151,7 @@ regs : reg_file
     s_reg1_addr <= "11111";
     s_reg2_addr <= "00001";
     s_write_addr <= "00001";
-    s_write_data <= x"00000064";                               -- 100/d
+    s_write_data <= x"80000064";                               -- 100/d
     s_write <= '1';
     wait for 100 ns;
     s_clk1 <= '1';
@@ -164,7 +164,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00010";
-    s_write_data <= x"000000C8";
+    s_write_data <= x"800000C8";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
@@ -176,7 +176,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00011";
-    s_write_data <= x"0000012C";
+    s_write_data <= x"8000012C";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
@@ -188,7 +188,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00100";
-    s_write_data <= x"00000190";
+    s_write_data <= x"80000190";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
