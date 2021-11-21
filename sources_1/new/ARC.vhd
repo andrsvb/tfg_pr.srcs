@@ -130,25 +130,65 @@ end component;
 
 component eEX IS
   PORT (
-        ex_clk, ex_reset : in STD_LOGIC
+    ex_clk1, ex_clk2, ex_reset : in STD_LOGIC;
+    ex_pc : in std_logic_vector (31 downto 0);
+    ex_rs : in std_logic_vector (31 downto 0);
+    ex_rt : in std_logic_vector (31 downto 0);
+    ex_imm : in std_logic_vector (31 downto 0);
+    ex_aluop : in std_logic_vector (3 downto 0);
+    ex_alusrc : in std_logic;
+    ex_branch_in : in std_logic;
+    ex_branch_out : out std_logic;
+    ex_branch_addr : out std_logic_vector (31 downto 0);
+    ex_sALU : out std_logic_vector (31 downto 0)
   );
 end component;
 
 component rEX_MEM IS
   PORT (
-        xm_clk, xm_reset : in STD_LOGIC
+        xm_clk, xm_reset : in STD_LOGIC;
+        xm_branch_in : in std_logic;
+        xm_branch_addr_in : in std_logic_vector (31 downto 0);
+        xm_sALU_in : in std_logic_vector (31 downto 0);
+        xm_rt_in : in std_logic_vector (31 downto 0);
+        xm_rwrite_addr_in : in std_logic_vector (4 downto 0);
+        xm_memread_in : in std_logic;
+        xm_memwrite_in : in std_logic_vector (0 downto 0);
+        xm_regsrc_in : in std_logic;
+        xm_regwrite_in : in std_logic;
+        xm_rt_out : out std_logic_vector (31 downto 0);
+        xm_sALU_out : out std_logic_vector (31 downto 0);
+        xm_memread_out : out std_logic;
+        xm_memwrite_out : out std_logic_vector (0 downto 0);
+        xm_regsrc_out : out std_logic;
+        xm_rwrite_addr_out : out std_logic_vector (4 downto 0);
+        xm_regwrite_out : out std_logic;
+        xm_branch_out : out std_logic;
+        xm_branch_addr_out : out std_logic_vector (31 downto 0)
   );
 end component;
 
 component eMEM IS
   PORT (
-        mem_clk, mem_reset : in STD_LOGIC
+        mem_clk1, mem_reset : in STD_LOGIC;
+        mem_write : in std_logic_vector (0 downto 0);
+        mem_read : in std_logic;
+        mem_rt : in std_logic_vector (31 downto 0);
+        mem_sALU : in std_logic_vector (31 downto 0);
+        mem_regsrc : in std_logic;
+        mem_regw_data : out std_logic_vector (31 downto 0)
   );
 end component;
 
 component rMEM_WB IS
   PORT (
-        mw_clk, mw_reset : in STD_LOGIC
+        mw_clk, mw_reset : in STD_LOGIC;
+        mw_regw_data_in : in std_logic_vector (31 downto 0);
+        mw_rwrite_addr_in : in std_logic_vector (4 downto 0);
+        mw_regwrite_in : in std_logic;
+        mw_regw_data_out : out std_logic_vector (31 downto 0);
+        mw_rwrite_addr_out : out std_logic_vector (4 downto 0);
+        mw_regwrite_out : out std_logic
   );
 end component;
 
@@ -190,14 +230,27 @@ signal s_ex_rs : std_logic_vector (31 downto 0);
 signal s_ex_rt : std_logic_vector (31 downto 0);
 signal s_ex_imm : std_logic_vector (31 downto 0);
 signal s_ex_rwrite_addr : std_logic_vector (4 downto 0);
-signal s_ex_jump : std_logic;
-signal s_ex_branch : std_logic;
+signal s_ex_branch_in : std_logic;
+signal s_ex_branch_out : std_logic;
+signal s_ex_branch_addr : std_logic_vector (31 downto 0);
+signal s_ex_sALU : std_logic_vector (31 downto 0);
 signal s_ex_memread : std_logic;
 signal s_ex_memwrite : std_logic_vector (0 downto 0);
 signal s_ex_regsrc : std_logic;
 signal s_ex_aluop : std_logic_vector (3 downto 0);
 signal s_ex_alusrc : std_logic;
 signal s_ex_regwrite : std_logic;
+
+            --señales de memory
+signal s_mem_rt : std_logic_vector (31 downto 0);
+signal s_mem_rwrite_addr : std_logic_vector (4 downto 0);
+signal s_mem_sALU : std_logic_vector (31 downto 0);
+signal s_mem_memread : std_logic;
+signal s_mem_memwrite : std_logic_vector (0 downto 0);
+signal s_mem_regsrc : std_logic;
+signal s_mem_regwrite : std_logic;
+signal s_mem_regw_data : std_logic_vector (31 downto 0);
+
 
             --señales de write back
 signal s_wb_regwrite : std_logic;
@@ -290,7 +343,7 @@ r_ID_EX: rID_EX
         dex_rt_out => s_ex_rt,
         dex_imm_out => s_ex_imm,
         dex_rwrite_addr_out => s_ex_rwrite_addr,
-        dex_branch_out => s_ex_branch,
+        dex_branch_out => s_ex_branch_in,
         dex_memread_out => s_ex_memread,
         dex_memwrite_out => s_ex_memwrite,
         dex_regsrc_out => s_ex_regsrc,
@@ -303,26 +356,67 @@ r_ID_EX: rID_EX
 
 e_EX: eEX
   PORT MAP(
-        ex_clk => clk,
-        ex_reset => reset
+        ex_clk1 => s_clk1,
+        ex_clk2 => s_clk2,
+        ex_reset => reset,
+        ex_pc => s_ex_PC,
+        ex_rs => s_ex_rs,
+        ex_rt => s_ex_rt,
+        ex_imm => s_ex_imm,
+        ex_aluop => s_ex_aluop,
+        ex_alusrc => s_ex_alusrc,
+        ex_branch_in => s_ex_branch_in,
+        ex_branch_out => s_ex_branch_out,
+        ex_branch_addr => s_ex_branch_addr,
+        ex_sALU => s_ex_sALU
   );
 
 r_EX_MEM: rEX_MEM
   PORT MAP(
         xm_clk => clk,
-        xm_reset => reset
+        xm_reset => reset,
+        xm_branch_in => s_ex_branch_out,
+        xm_branch_addr_in => s_ex_branch_addr,
+        xm_sALU_in => s_ex_sALU,
+        xm_rt_in => s_ex_rt,
+        xm_rwrite_addr_in => s_ex_rwrite_addr,
+        xm_memread_in => s_ex_memread,
+        xm_memwrite_in => s_ex_memwrite,
+        xm_regsrc_in => s_ex_regsrc,
+        xm_regwrite_in => s_ex_regwrite,
+        xm_rt_out => s_mem_rt,
+        xm_sALU_out => s_mem_sALU,
+        xm_memread_out => s_mem_memread,
+        xm_memwrite_out => s_mem_memwrite,
+        xm_regsrc_out => s_mem_regsrc,
+        xm_rwrite_addr_out => s_mem_rwrite_addr,
+        xm_regwrite_out => s_mem_regwrite,
+        xm_branch_out => s_if_branch,
+        xm_branch_addr_out => s_if_branch_addr
   );
 
 e_MEM: eMEM
   PORT MAP(
-        mem_clk => clk,
-        mem_reset => reset
+        mem_clk1 => s_clk1,
+        mem_reset => reset,
+        mem_write => s_mem_memwrite,
+        mem_read => s_mem_memread,
+        mem_rt => s_mem_rt,
+        mem_sALU => s_mem_sALU,
+        mem_regsrc => s_mem_regsrc,
+        mem_regw_data => s_mem_regw_data
   );
 
 r_MEM_WB: rMEM_WB
   PORT MAP(
         mw_clk => clk,
-        mw_reset => reset
+        mw_reset => reset,
+        mw_regw_data_in => s_mem_regw_data,
+        mw_rwrite_addr_in => s_mem_rwrite_addr,
+        mw_regwrite_in => s_mem_regwrite,
+        mw_regw_data_out => s_wb_rwrite_data,
+        mw_rwrite_addr_out => s_wb_rwrite_addr,
+        mw_regwrite_out => s_wb_regwrite
   );
 
 end Behavioral;

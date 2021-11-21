@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eMEM is
     Port ( 
-        mem_clk1, if_reset : in STD_LOGIC;
+        mem_clk1, mem_reset : in STD_LOGIC;
                     -- señal de control para escribir
         mem_write : in std_logic_vector (0 downto 0);
                     -- señal de control para leer

@@ -90,7 +90,7 @@ regs : reg_file
     s_reg2_addr <= "00001";
     s_write <= '0';
     s_write_addr <= "00001";
-    s_write_data <= x"10000000";
+    s_write_data <= x"00000000";
     wait for 100 ns;
     s_reset <= '0';
     wait for 100 ns;
@@ -151,7 +151,7 @@ regs : reg_file
     s_reg1_addr <= "11111";
     s_reg2_addr <= "00001";
     s_write_addr <= "00001";
-    s_write_data <= x"80000064";                               -- 100/d
+    s_write_data <= x"00000064";                               -- 100/d
     s_write <= '1';
     wait for 100 ns;
     s_clk1 <= '1';
@@ -164,7 +164,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00010";
-    s_write_data <= x"800000C8";
+    s_write_data <= x"000000C8";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
@@ -176,7 +176,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00011";
-    s_write_data <= x"8000012C";
+    s_write_data <= x"0000012C";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
@@ -188,7 +188,7 @@ regs : reg_file
     s_clk1 <= '0';
     s_clk2 <= '0';
     s_write_addr <= "00100";
-    s_write_data <= x"80000190";
+    s_write_data <= x"00000190";
     wait for 100 ns;
     s_clk1 <= '1';
     s_clk2 <= '0';
