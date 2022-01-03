@@ -16,7 +16,7 @@
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="142"></ValueColumnWidth>
+      <ValueColumnWidth column_width="138"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
    <wvobject fp_name="group52" type="group">
@@ -26,10 +26,12 @@
       <wvobject fp_name="/test_ALU/test_logic/s_b" type="array">
          <obj_property name="ElementShortName">s_b[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/test_ALU/test_logic/s_a" type="array">
          <obj_property name="ElementShortName">s_a[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_a[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/test_ALU/test_logic/s_alu_op" type="array">
          <obj_property name="ElementShortName">s_alu_op[2:0]</obj_property>
@@ -43,6 +45,7 @@
       <wvobject fp_name="/test_ALU/test_logic/s_s" type="array">
          <obj_property name="ElementShortName">s_s[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_s[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group59" type="group">
