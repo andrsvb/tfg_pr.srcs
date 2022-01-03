@@ -21,6 +21,7 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -46,13 +47,6 @@ end reg_file;
 
 architecture Behavioral of reg_file is
 
-component decoder32 is
-    Port ( 
-        bits : in std_logic_vector (4 downto 0);
-        int : out integer range 0 to 31
-    );
-end component;
-
 type reg is array (0 to 31) of std_logic_vector(31 downto 0);
 signal s_reg : reg := (x"00000000", x"00000001", x"00000002", x"00000003", x"00000004", x"00000005", x"00000006", x"00000007",
                        x"00000008", x"00000009", x"0000000A", x"0000000B", x"0000000C", x"0000000D", x"0000000E", x"0000000F",
@@ -66,24 +60,13 @@ signal sel_write : integer range 0 to 31;
 
 begin
 
-decode_reg1: decoder32 port map (
-      bits => rf_rs_addr,
-      int => sel_rs
-  );
-
+sel_rs <= to_integer(unsigned(rf_rs_addr));
 s_rs <= s_reg(sel_rs);
 
-decode_reg2: decoder32 port map (
-      bits => rf_rt_addr,
-      int => sel_rt
-  );
-
+sel_rt <= to_integer(unsigned(rf_rt_addr));
 s_rt <= s_reg(sel_rt);
 
-decode_write: decoder32 port map (
-      bits => rf_write_addr,
-      int => sel_write
-  );
+sel_write <= to_integer(unsigned(rf_write_addr));
 
 process (rf_clk1, rf_clk2, rf_reset)
 begin
