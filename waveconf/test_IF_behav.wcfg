@@ -11,12 +11,12 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="4000001fs"></ZoomEndTime>
+      <ZoomEndTime time="2251534fs"></ZoomEndTime>
       <Cursor1Time time="4000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="126"></ValueColumnWidth>
+      <ValueColumnWidth column_width="122"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="10" />
    <wvobject fp_name="/test_IF/s_clk1" type="logic">
@@ -35,17 +35,17 @@
       <obj_property name="ElementShortName">s_branch</obj_property>
       <obj_property name="ObjectShortName">s_branch</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_IF/s_branchADDR" type="array">
-      <obj_property name="ElementShortName">s_branchADDR[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_branchADDR[31:0]</obj_property>
+   <wvobject fp_name="/test_IF/s_branch_addr" type="array">
+      <obj_property name="ElementShortName">s_branch_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_branch_addr[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test_IF/s_jump" type="logic">
       <obj_property name="ElementShortName">s_jump</obj_property>
       <obj_property name="ObjectShortName">s_jump</obj_property>
    </wvobject>
-   <wvobject fp_name="/test_IF/s_jumpADDR" type="array">
-      <obj_property name="ElementShortName">s_jumpADDR[31:0]</obj_property>
-      <obj_property name="ObjectShortName">s_jumpADDR[31:0]</obj_property>
+   <wvobject fp_name="/test_IF/s_jump_addr" type="array">
+      <obj_property name="ElementShortName">s_jump_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_jump_addr[31:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/test_IF/s_PC4" type="array">
       <obj_property name="ElementShortName">s_PC4[31:0]</obj_property>

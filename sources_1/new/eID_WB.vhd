@@ -138,8 +138,11 @@ id_rwrite_addr <= id_instr(15 downto 11) when s_regdst = '0' else id_instr(20 do
 id_jump_addr <= id_pc(31 downto 28) & id_instr(25 downto 0) & "00";
 
         -- valor inmediato:
-                -- primeros 16 bits 0-extended
-id_imm(31 downto 16) <= x"0000";
+                -- primeros 16 bits sing-extended
+id_imm(31 downto 16) <= id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15)
+                      & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15)
+                      & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15)
+                      & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15) & id_instr(15 downto 15);
                 -- ultimos 16 bits de la instruccion
 id_imm(15 downto 0) <= id_instr(15 downto 0);
 
