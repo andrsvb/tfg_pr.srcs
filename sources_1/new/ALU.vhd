@@ -33,8 +33,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ALU is
   port ( 
-    a : in std_logic_vector (31 downto 0);
-    b : in std_logic_vector (31 downto 0);
+    a : in std_logic_vector (31 downto 0);         -- rs
+    b : in std_logic_vector (31 downto 0);         -- rt o imm
+    sa : in std_logic_vector (4 downto 0);         -- shift amount
     alu_op : in std_logic_vector (2 downto 0);
     aux : in std_logic;
     s : out std_logic_vector(31 downto 0);
@@ -140,16 +141,16 @@ end generate;
 -- SLL
 sh_left : SL
   port map(
-    s_in => a,
-    s_sel => b(4 downto 0),
+    s_in => b,
+    s_sel => sa,
     s_out => s_sl
   );
 
 -- SRL si aux = 0 ; SRA si aux = 1
 sh_right : SR
   port map(
-    s_in => a,
-    s_sel => b(4 downto 0),
+    s_in => b,
+    s_sel => sa,
     s_ari => aux,
     s_out => s_sr
   );

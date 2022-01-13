@@ -39,7 +39,7 @@ entity control_unit is
         cu_jump : out std_logic;                               -- para operaciones de salto
         cu_branch : out std_logic;                             -- para operaciones de branch
         cu_memread : out std_logic;                            -- para leer de memoria
-        cu_memwrite : out std_logic_vector (0 downto 0);       -- para escribir en memoria
+        cu_memwrite : out std_logic;                           -- para escribir en memoria
         cu_regsrc : out std_logic;                             -- origen de los datos a escribir en registro, ALU (0) o memoria (1)
         cu_aluop : out std_logic_vector (3 downto 0);          -- para indicar qué operacion que ejecuta la ALU
         cu_alusrc : out std_logic;                             -- origen del segundo parámetro de la ALU, rt (0) o imm (1)
@@ -59,7 +59,7 @@ cu_branch <= '1' when cu_opcode = "000100" else '0';
 
 cu_memread <= '1' when cu_opcode = "100011" else '0';
 
-cu_memwrite <= "1" when cu_opcode = "101011" else "0";
+cu_memwrite <= '1' when cu_opcode = "101011" else '0';
 
 cu_regsrc <= '1' when cu_opcode = "100011" else '0';
 

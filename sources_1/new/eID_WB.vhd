@@ -42,6 +42,8 @@ entity eID_WB is
                     -- ID registros leidos
         id_rs : out std_logic_vector (31 downto 0);
         id_rt : out std_logic_vector (31 downto 0);
+                    -- ID shift amount
+        id_sa : out std_logic_vector (4 downto 0);
                     -- ID sign extended immediate
         id_imm : out std_logic_vector (31 downto 0);
                     -- ID direccion de registro a escribir (o no) en WB
@@ -52,7 +54,7 @@ entity eID_WB is
         id_jump : out std_logic;
         id_branch : out std_logic;
         id_memread : out std_logic;
-        id_memwrite : out std_logic_vector (0 downto 0);
+        id_memwrite : out std_logic;
         id_regsrc : out std_logic;
         id_aluop : out std_logic_vector (3 downto 0);
         id_alusrc : out std_logic;
@@ -89,7 +91,7 @@ component control_unit is
         cu_jump : out std_logic;
         cu_branch : out std_logic;
         cu_memread : out std_logic;
-        cu_memwrite : out std_logic_vector (0 downto 0);
+        cu_memwrite : out std_logic;
         cu_regsrc : out std_logic;
         cu_aluop : out std_logic_vector (3 downto 0);
         cu_alusrc : out std_logic;
@@ -134,6 +136,7 @@ ctrl_unit : control_unit
         -- segun la señal s_regdst se escribira o en el registro rd o rt
 id_rwrite_addr <= id_instr(15 downto 11) when s_regdst = '0' else id_instr(20 downto 16);
 
+id_sa <= id_instr(10 downto 6);
 
 id_jump_addr <= id_pc(31 downto 28) & id_instr(25 downto 0) & "00";
 

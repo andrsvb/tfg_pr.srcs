@@ -40,6 +40,8 @@ entity eEX is
         -- register data
     ex_rs : in std_logic_vector (31 downto 0);
     ex_rt : in std_logic_vector (31 downto 0);
+        -- shift amount
+    ex_sa : in std_logic_vector (31 downto 0);
         -- immediate value
     ex_imm : in std_logic_vector (31 downto 0);
         -- control signal for ALU operation
@@ -62,6 +64,7 @@ component ALU is
   port ( 
     a : in std_logic_vector (31 downto 0);
     b : in std_logic_vector (31 downto 0);
+    sa : in std_logic_vector (4 downto 0);
     alu_op : in std_logic_vector (2 downto 0);
     aux : in std_logic;
     s : out std_logic_vector(31 downto 0);
@@ -96,6 +99,7 @@ EX_ALU : ALU
   port map (
     a => ex_rs,
     b => s_b,
+    sa => ex_sa,
     alu_op => ex_aluop(2 downto 0),
     aux => ex_aluop(0),
     s => s_sALU,

@@ -33,9 +33,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eMEM is
     Port ( 
-        mem_clk1, mem_reset : in STD_LOGIC;
+        mem_clk1, mem_clk2, mem_reset : in STD_LOGIC;
                     -- señal de control para escribir
-        mem_write : in std_logic_vector (0 downto 0);
+        mem_write : in std_logic;
                     -- señal de control para leer
         mem_read : in std_logic;
                     -- datos a escribir en memoria, del registro rt
@@ -53,33 +53,32 @@ end eMEM;
 
 architecture Behavioral of eMEM is
 
-component mem_ram IS
-  PORT (
-    clka : IN STD_LOGIC;
-    ena : IN STD_LOGIC;                                 -- enable read & write a
-    wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);              -- write enable a
-    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);            -- address a
-    dina : IN STD_LOGIC_VECTOR(31 DOWNTO 0);            -- data in a
-    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)           -- data out a
-  );
+component mem_data is
+    Port ( 
+        md_clk1, md_clk2, md_reset : in STD_LOGIC;
+        md_addr : in std_logic_vector (4 downto 0);
+        md_write : in std_logic;
+        md_read : in std_logic;
+        md_data_in : in std_logic_vector (31 downto 0);
+        md_data_out : out std_logic_vector (31 downto 0)
+    );
 end component;
 
-signal s_enable : std_logic;
 signal s_mem_data_out : std_logic_vector (31 downto 0);
 
 begin
 
--- señal enable de escritura o lectura
-s_enable <= mem_write(0) or mem_read;
 
- MEM_DataMem: mem_ram
+ MEM_DataMem: mem_data
   port map(
-      clka => mem_clk1,
-      ena => s_enable,
-      wea => mem_write,
-      addra => mem_sALU(6 downto 2),
-      dina => mem_rt,
-      douta => s_mem_data_out
+      md_clk1 => mem_clk1,
+      md_clk2 => mem_clk2,
+      md_reset => mem_reset,
+      md_addr => mem_sALU(6 downto 2),
+      md_write => mem_write,
+      md_read => mem_read,
+      md_data_in => mem_rt,
+      md_data_out => s_mem_data_out
   );
 
 -- escoge el origen de los datos a escribir en los registros

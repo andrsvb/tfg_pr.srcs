@@ -44,7 +44,7 @@ entity rEX_MEM is
         xm_rt_in : in std_logic_vector (31 downto 0);
         xm_rwrite_addr_in : in std_logic_vector (4 downto 0);
         xm_memread_in : in std_logic;
-        xm_memwrite_in : in std_logic_vector (0 downto 0);
+        xm_memwrite_in : in std_logic;
         xm_regsrc_in : in std_logic;
         xm_regwrite_in : in std_logic;
         -- OUT
@@ -52,7 +52,7 @@ entity rEX_MEM is
         xm_rt_out : out std_logic_vector (31 downto 0);
         xm_sALU_out : out std_logic_vector (31 downto 0);
         xm_memread_out : out std_logic;
-        xm_memwrite_out : out std_logic_vector (0 downto 0);
+        xm_memwrite_out : out std_logic;
         xm_regsrc_out : out std_logic;
                 -- datos enviados a registro mem_wb
         xm_rwrite_addr_out : out std_logic_vector (4 downto 0);
@@ -73,7 +73,7 @@ begin
         xm_rt_out <= x"00000000";
         xm_sALU_out <= x"00000000";
         xm_memread_out <= '0';
-        xm_memwrite_out <= "0";
+        xm_memwrite_out <= '0';
         xm_regsrc_out <= '0';
         xm_rwrite_addr_out <= "00000";
         xm_regwrite_out <= '0';

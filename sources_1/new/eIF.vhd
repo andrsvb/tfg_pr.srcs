@@ -56,13 +56,12 @@ component PC is
     );
 end component;
 
-component instr_rom IS
-  PORT (
-    clka : IN STD_LOGIC;
-    ena : IN STD_LOGIC;
-    addra : IN STD_LOGIC_VECTOR(4 DOWNTO 0);
-    douta : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-  );
+component mem_instr is
+    Port ( 
+        mi_clk2, mi_reset : in STD_LOGIC;
+        mi_pc : in std_logic_vector (4 downto 0);
+        mi_instr : out std_logic_vector (31 downto 0)
+    );
 end component;
 
 signal s_pc: std_logic_vector (31 downto 0);
@@ -82,12 +81,12 @@ IF_ProgramCounter: PC
 
 if_pc <= s_pc;
 
- IF_InstrMem: instr_rom
+ IF_InstrMem: mem_instr
   port map(
-      clka => if_clk2,
-      ena => '1',
-      addra => s_pc(6 downto 2),
-      douta => if_instr
+      mi_clk2 => if_clk2,
+      mi_reset => if_reset,
+      mi_pc => s_pc(6 downto 2),
+      mi_instr => if_instr
   );
 
 end Behavioral;

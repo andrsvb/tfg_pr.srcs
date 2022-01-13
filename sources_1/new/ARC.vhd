@@ -77,13 +77,14 @@ component eID_WB IS
         id_PC : in std_logic_vector (31 downto 0);
         id_rs : out std_logic_vector (31 downto 0);
         id_rt : out std_logic_vector (31 downto 0);
+        id_sa : out std_logic_vector (4 downto 0);
         id_imm : out std_logic_vector (31 downto 0);
         id_rwrite_addr : out std_logic_vector (4 downto 0);
         id_jump_addr : out std_logic_vector (31 downto 0);
         id_jump : out std_logic;
         id_branch : out std_logic;
         id_memread : out std_logic;
-        id_memwrite : out std_logic_vector (0 downto 0);
+        id_memwrite : out std_logic;
         id_regsrc : out std_logic;
         id_aluop : out std_logic_vector (3 downto 0);
         id_alusrc : out std_logic;
@@ -100,13 +101,14 @@ component rID_EX IS
         dex_PC_in : in std_logic_vector (31 downto 0);
         dex_rs_in : in std_logic_vector (31 downto 0);
         dex_rt_in : in std_logic_vector (31 downto 0);
+        dex_sa_in : in std_logic_vector (4 downto 0);
         dex_imm_in : in std_logic_vector (31 downto 0);
         dex_rwrite_addr_in : in std_logic_vector (4 downto 0);
         dex_jump_in : in std_logic;
         dex_jump_addr_in : in std_logic_vector (31 downto 0);
         dex_branch_in : in std_logic;
         dex_memread_in : in std_logic;
-        dex_memwrite_in : in std_logic_vector (0 downto 0);
+        dex_memwrite_in : in std_logic;
         dex_regsrc_in : in std_logic;
         dex_aluop_in : in std_logic_vector (3 downto 0);
         dex_alusrc_in : in std_logic;
@@ -114,13 +116,14 @@ component rID_EX IS
         dex_PC_out : out std_logic_vector (31 downto 0);
         dex_rs_out : out std_logic_vector (31 downto 0);
         dex_rt_out : out std_logic_vector (31 downto 0);
+        dex_sa_out : out std_logic_vector (4 downto 0);
         dex_imm_out : out std_logic_vector (31 downto 0);
         dex_rwrite_addr_out : out std_logic_vector (4 downto 0);
         dex_jump_out : out std_logic;
         dex_jump_addr_out : out std_logic_vector (31 downto 0);
         dex_branch_out : out std_logic;
         dex_memread_out : out std_logic;
-        dex_memwrite_out : out std_logic_vector (0 downto 0);
+        dex_memwrite_out : out std_logic;
         dex_regsrc_out : out std_logic;
         dex_aluop_out : out std_logic_vector (3 downto 0);
         dex_alusrc_out : out std_logic;
@@ -134,6 +137,7 @@ component eEX IS
     ex_pc : in std_logic_vector (31 downto 0);
     ex_rs : in std_logic_vector (31 downto 0);
     ex_rt : in std_logic_vector (31 downto 0);
+    ex_sa : in std_logic_vector (4 downto 0);
     ex_imm : in std_logic_vector (31 downto 0);
     ex_aluop : in std_logic_vector (3 downto 0);
     ex_alusrc : in std_logic;
@@ -153,13 +157,13 @@ component rEX_MEM IS
         xm_rt_in : in std_logic_vector (31 downto 0);
         xm_rwrite_addr_in : in std_logic_vector (4 downto 0);
         xm_memread_in : in std_logic;
-        xm_memwrite_in : in std_logic_vector (0 downto 0);
+        xm_memwrite_in : in std_logic;
         xm_regsrc_in : in std_logic;
         xm_regwrite_in : in std_logic;
         xm_rt_out : out std_logic_vector (31 downto 0);
         xm_sALU_out : out std_logic_vector (31 downto 0);
         xm_memread_out : out std_logic;
-        xm_memwrite_out : out std_logic_vector (0 downto 0);
+        xm_memwrite_out : out std_logic;
         xm_regsrc_out : out std_logic;
         xm_rwrite_addr_out : out std_logic_vector (4 downto 0);
         xm_regwrite_out : out std_logic;
@@ -170,8 +174,8 @@ end component;
 
 component eMEM IS
   PORT (
-        mem_clk1, mem_reset : in STD_LOGIC;
-        mem_write : in std_logic_vector (0 downto 0);
+        mem_clk1, mem_clk2, mem_reset : in STD_LOGIC;
+        mem_write : in std_logic;
         mem_read : in std_logic;
         mem_rt : in std_logic_vector (31 downto 0);
         mem_sALU : in std_logic_vector (31 downto 0);
@@ -212,13 +216,14 @@ signal s_id_PC : std_logic_vector (31 downto 0);
 signal s_id_instr : std_logic_vector (31 downto 0);
 signal s_id_rs : std_logic_vector (31 downto 0);
 signal s_id_rt : std_logic_vector (31 downto 0);
+signal s_id_sa : std_logic_vector (4 downto 0);
 signal s_id_imm : std_logic_vector (31 downto 0);
 signal s_id_rwrite_addr : std_logic_vector (4 downto 0);
 signal s_id_jump_addr : std_logic_vector (31 downto 0);
 signal s_id_jump : std_logic;
 signal s_id_branch : std_logic;
 signal s_id_memread : std_logic;
-signal s_id_memwrite : std_logic_vector (0 downto 0);
+signal s_id_memwrite : std_logic;
 signal s_id_regsrc : std_logic;
 signal s_id_aluop : std_logic_vector (3 downto 0);
 signal s_id_alusrc : std_logic;
@@ -228,6 +233,7 @@ signal s_id_regwrite : std_logic;
 signal s_ex_PC : std_logic_vector (31 downto 0);
 signal s_ex_rs : std_logic_vector (31 downto 0);
 signal s_ex_rt : std_logic_vector (31 downto 0);
+signal s_ex_sa : std_logic_vector (4 downto 0);
 signal s_ex_imm : std_logic_vector (31 downto 0);
 signal s_ex_rwrite_addr : std_logic_vector (4 downto 0);
 signal s_ex_branch_in : std_logic;
@@ -235,7 +241,7 @@ signal s_ex_branch_out : std_logic;
 signal s_ex_branch_addr : std_logic_vector (31 downto 0);
 signal s_ex_sALU : std_logic_vector (31 downto 0);
 signal s_ex_memread : std_logic;
-signal s_ex_memwrite : std_logic_vector (0 downto 0);
+signal s_ex_memwrite : std_logic;
 signal s_ex_regsrc : std_logic;
 signal s_ex_aluop : std_logic_vector (3 downto 0);
 signal s_ex_alusrc : std_logic;
@@ -246,7 +252,7 @@ signal s_mem_rt : std_logic_vector (31 downto 0);
 signal s_mem_rwrite_addr : std_logic_vector (4 downto 0);
 signal s_mem_sALU : std_logic_vector (31 downto 0);
 signal s_mem_memread : std_logic;
-signal s_mem_memwrite : std_logic_vector (0 downto 0);
+signal s_mem_memwrite : std_logic;
 signal s_mem_regsrc : std_logic;
 signal s_mem_regwrite : std_logic;
 signal s_mem_regw_data : std_logic_vector (31 downto 0);
@@ -304,6 +310,7 @@ e_ID_WB: eID_WB
         id_PC => s_id_PC,
         id_rs => s_id_rs,
         id_rt => s_id_rt,
+        id_sa => s_id_sa,
         id_imm => s_id_imm,
         id_jump_addr => s_id_jump_addr,
         id_rwrite_addr => s_id_rwrite_addr,
@@ -327,6 +334,7 @@ r_ID_EX: rID_EX
         dex_PC_in => s_id_PC,
         dex_rs_in => s_id_rs,
         dex_rt_in => s_id_rt,
+        dex_sa_in => s_id_sa,
         dex_imm_in => s_id_imm,
         dex_rwrite_addr_in => s_id_rwrite_addr,
         dex_jump_in => s_id_jump,
@@ -341,6 +349,7 @@ r_ID_EX: rID_EX
         dex_PC_out => s_ex_PC,
         dex_rs_out => s_ex_rs,
         dex_rt_out => s_ex_rt,
+        dex_sa_out => s_ex_sa,
         dex_imm_out => s_ex_imm,
         dex_rwrite_addr_out => s_ex_rwrite_addr,
         dex_branch_out => s_ex_branch_in,
@@ -362,6 +371,7 @@ e_EX: eEX
         ex_pc => s_ex_PC,
         ex_rs => s_ex_rs,
         ex_rt => s_ex_rt,
+        ex_sa => s_ex_sa,
         ex_imm => s_ex_imm,
         ex_aluop => s_ex_aluop,
         ex_alusrc => s_ex_alusrc,
@@ -398,6 +408,7 @@ r_EX_MEM: rEX_MEM
 e_MEM: eMEM
   PORT MAP(
         mem_clk1 => s_clk1,
+        mem_clk2 => s_clk2,
         mem_reset => reset,
         mem_write => s_mem_memwrite,
         mem_read => s_mem_memread,
