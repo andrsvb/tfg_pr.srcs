@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity eID_WB is
     Port ( 
                     -- señales de reloj y reset
-        idwb_clk1, idwb_clk2, idwb_reset : in STD_LOGIC;
+        idwb_clk, idwb_reset : in STD_LOGIC;
                     -- ID instruccion a decodificar
         id_instr : in std_logic_vector (31 downto 0);
                     -- ID contador de programa +4
@@ -72,7 +72,7 @@ architecture Behavioral of eID_WB is
 
 component reg_file is
     Port ( 
-        rf_clk1, rf_clk2, rf_reset : in STD_LOGIC;
+        rf_clk, rf_reset : in STD_LOGIC;
         rf_rs_addr : in std_logic_vector (4 downto 0);
         rf_rt_addr : in std_logic_vector (4 downto 0);
         rf_write : in std_logic;
@@ -106,8 +106,7 @@ begin
 
 regs : reg_file
     Port map (
-        rf_clk1 => idwb_clk1,
-        rf_clk2 => idwb_clk2,
+        rf_clk => idwb_clk,
         rf_reset => idwb_reset,
         rf_rs_addr => id_instr(25 downto 21),
         rf_rt_addr => id_instr(20 downto 16),

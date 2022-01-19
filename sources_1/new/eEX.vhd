@@ -34,7 +34,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity eEX is
   port (
         -- clock and reset signals
-    ex_clk1, ex_clk2, ex_reset : in STD_LOGIC;
+    ex_clk, ex_reset : in STD_LOGIC;
         -- program counter (for branch)
     ex_pc : in std_logic_vector (31 downto 0);
         -- register data

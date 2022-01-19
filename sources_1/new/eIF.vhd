@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eIF is
     Port ( 
-        if_clk1, if_clk2, if_reset : in STD_LOGIC;
+        if_clk, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
         if_branch_addr : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
@@ -58,7 +58,7 @@ end component;
 
 component mem_instr is
     Port ( 
-        mi_clk2, mi_reset : in STD_LOGIC;
+        mi_reset : in STD_LOGIC;
         mi_pc : in std_logic_vector (4 downto 0);
         mi_instr : out std_logic_vector (31 downto 0)
     );
@@ -70,7 +70,7 @@ begin
 
 IF_ProgramCounter: PC
   port map(
-      pc_clk => if_clk1,
+      pc_clk => if_clk,
       pc_reset => if_reset,
       pc_branch => if_branch,
       pc_branch_addr => if_branch_addr,
@@ -83,7 +83,6 @@ if_pc <= s_pc;
 
  IF_InstrMem: mem_instr
   port map(
-      mi_clk2 => if_clk2,
       mi_reset => if_reset,
       mi_pc => s_pc(6 downto 2),
       mi_instr => if_instr

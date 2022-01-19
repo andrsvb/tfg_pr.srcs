@@ -39,7 +39,7 @@ architecture Behavioral of test_reg_file is
 
 component reg_file is
     Port ( 
-        rf_clk1, rf_clk2, rf_reset : in STD_LOGIC;
+        rf_clk, rf_reset : in STD_LOGIC;
         rf_rs_addr : in std_logic_vector (4 downto 0);
         rf_rt_addr : in std_logic_vector (4 downto 0);
         rf_write : in std_logic;
@@ -50,8 +50,7 @@ component reg_file is
     );
 end component;
 
-signal s_clk1 : std_logic;
-signal s_clk2 : std_logic;
+signal s_clk : std_logic;
 signal s_reset : std_logic;
 signal s_reg1_addr : std_logic_vector (4 downto 0);
 signal s_reg2_addr : std_logic_vector (4 downto 0);
@@ -65,8 +64,7 @@ begin
 
 regs : reg_file
     Port map ( 
-        rf_clk1 => s_clk1,
-        rf_clk2 => s_clk2,
+        rf_clk => s_clk,
         rf_reset => s_reset,
         rf_rs_addr => s_reg1_addr,
         rf_rt_addr => s_reg2_addr,
@@ -83,8 +81,7 @@ regs : reg_file
 -- TEST REGISTER FILE
 --            SETUP
   
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     s_reset <= '1';
     s_reg1_addr <= "00000";
     s_reg2_addr <= "00001";
@@ -98,52 +95,27 @@ regs : reg_file
 --            READ REGISTERS
     s_reg1_addr <= "00010";
     s_reg2_addr <= "00011";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "00100";
     s_reg2_addr <= "00101";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "00110";
     s_reg2_addr <= "00111";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "01000";
     s_reg2_addr <= "01001";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "01010";
     s_reg2_addr <= "01011";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "01100";
     s_reg2_addr <= "01101";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "01110";
     s_reg2_addr <= "01111";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk2 <= '0';
     wait for 100 ns;
     s_reg1_addr <= "10000";
     s_reg2_addr <= "10001";
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '0';
     wait for 100 ns;
     
 --            WRITE & READ REGISTERS
@@ -154,50 +126,30 @@ regs : reg_file
     s_write_data <= x"00000064";                               -- 100/d
     s_write <= '1';
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= '1';
     wait for 100 ns;
     s_reg2_addr <= "00010";
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     s_write_addr <= "00010";
     s_write_data <= x"000000C8";
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= '1';
     wait for 100 ns;
     s_reg2_addr <= "00011";
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     s_write_addr <= "00011";
     s_write_data <= x"0000012C";
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= '1';
     wait for 100 ns;
     s_reg2_addr <= "00100";
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     s_write_addr <= "00100";
     s_write_data <= x"00000190";
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= '1';
     wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     wait for 200 ns;
     
   end process;

@@ -39,7 +39,7 @@ architecture Behavioral of test_IF is
 
 component eIF IS
   PORT (
-        if_clk1, if_clk2, if_reset : in STD_LOGIC;
+        if_clk, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
         if_branch_addr : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
@@ -49,33 +49,31 @@ component eIF IS
   );
 end component;
 
-signal s_clk1 : std_logic;
-signal s_clk2 : std_logic;
+signal s_clk : std_logic;
 signal s_reset : std_logic;
 signal s_branch : std_logic;
 signal s_branch_addr : std_logic_vector (31 downto 0);
 signal s_jump : std_logic;
 signal s_jump_addr : std_logic_vector (31 downto 0);
-signal s_PC4 : std_logic_vector (31 downto 0);
-signal s_PC4_aux : std_logic_vector (4 downto 0);
+signal s_PC : std_logic_vector (31 downto 0);
+signal s_PC_aux : std_logic_vector (4 downto 0);
 signal s_instr : std_logic_vector (31 downto 0);
 
 begin
 
 e_IF: eIF
   PORT MAP(
-        if_clk1 => s_clk1,
-        if_clk2 => s_clk2,
+        if_clk => s_clk,
         if_reset => s_reset,
         if_branch => s_branch,
         if_branch_addr => s_branch_addr,
         if_jump => s_jump,
         if_jump_addr => s_jump_addr,
-        if_PC => s_PC4,
+        if_PC => s_PC,
         if_instr => s_instr
   );
   
-  s_PC4_aux <= s_PC4 (6 downto 2);
+  s_PC_aux <= s_PC (6 downto 2);
   
   t_process : process
   begin
@@ -84,142 +82,54 @@ e_IF: eIF
 --            SETUP
 
     s_reset <= '1';
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     s_branch <= '0';
-    s_branch_addr <= x"00000028";       -- 25 bits que no usa .. 10/d .. 2 bits que no usa
+    s_branch_addr <= x"00000028";       -- 25 bits que no usa .. 10 .. 2 bits que no usa
     s_jump <= '0';
-    s_jump_addr <= x"00000050";         -- 25 bits que no usa .. 20/d .. 2 bits que no usa
+    s_jump_addr <= x"00000050";         -- 25 bits que no usa .. 20 .. 2 bits que no usa
     wait for 100 ns;
 
 --            NORMAL
 
     s_reset <= '0';
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= not s_clk;
     wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
+    for iter in 12 downto 1 loop
+        s_clk <= not s_clk;
+        wait for 100 ns;
+    end loop;
 
 --            BRANCH
 
     s_branch <= '1';
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= not s_clk;
     wait for 100 ns;
     s_branch <= '0';
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
+    for iter in 12 downto 1 loop
+        s_clk <= not s_clk;
+        wait for 100 ns;
+    end loop;
 
 --            JUMP
 
     s_jump <= '1';
-    s_clk1 <= '0';
-    s_clk2 <= '0';
+    s_clk <= '0';
     wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
+    s_clk <= not s_clk;
     wait for 100 ns;
     s_jump <= '0';
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
-    s_clk1 <= '1';
-    s_clk2 <= '0';
-    wait for 100 ns;
-    s_clk1 <= '0';
-    s_clk2 <= '1';
-    wait for 100 ns;
+    for iter in 12 downto 1 loop
+        s_clk <= not s_clk;
+        wait for 100 ns;
+    end loop;
+    
+    l_test_if: loop
+        s_clk <= not s_clk;
+        wait for 100 ns;
+    end loop l_test_if;
     
   end process;
 

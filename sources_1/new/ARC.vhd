@@ -40,17 +40,10 @@ architecture Behavioral of ARC is
 
                                                         -- COMPONENTS
 
-component clk_div is
-    Port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
-           clk0 : out STD_LOGIC;
-           clk1 : out STD_LOGIC;
-           clk2 : out STD_LOGIC);
-end component;
 
 component eIF IS
   PORT (
-        if_clk1, if_clk2, if_reset : in STD_LOGIC;
+        if_clk, if_reset : in STD_LOGIC;
         if_branch : in std_logic;
         if_branch_addr : in std_logic_vector (31 downto 0);
         if_jump : in std_logic;
@@ -72,7 +65,7 @@ end component;
 
 component eID_WB IS
   PORT (
-        idwb_clk1, idwb_clk2, idwb_reset : in STD_LOGIC;
+        idwb_clk, idwb_reset : in STD_LOGIC;
         id_instr : in std_logic_vector (31 downto 0);
         id_PC : in std_logic_vector (31 downto 0);
         id_rs : out std_logic_vector (31 downto 0);
@@ -133,7 +126,7 @@ end component;
 
 component eEX IS
   PORT (
-    ex_clk1, ex_clk2, ex_reset : in STD_LOGIC;
+    ex_clk, ex_reset : in STD_LOGIC;
     ex_pc : in std_logic_vector (31 downto 0);
     ex_rs : in std_logic_vector (31 downto 0);
     ex_rt : in std_logic_vector (31 downto 0);
@@ -174,7 +167,7 @@ end component;
 
 component eMEM IS
   PORT (
-        mem_clk1, mem_clk2, mem_reset : in STD_LOGIC;
+        mem_clk, mem_reset : in STD_LOGIC;
         mem_write : in std_logic;
         mem_read : in std_logic;
         mem_rt : in std_logic_vector (31 downto 0);
@@ -198,11 +191,10 @@ end component;
 
         -- SIGNALS
 
-            -- señales de reloj
-signal s_clk0 : std_logic;
-signal s_clk1 : std_logic;
-signal s_clk2 : std_logic;
+            --señal de reloj negada
+signal s_clk : std_logic;
 
+            
             --señales de instruction fetch
 signal s_if_branch : std_logic;
 signal s_if_branch_addr : std_logic_vector (31 downto 0);
@@ -268,20 +260,12 @@ signal s_wb_rwrite_data : std_logic_vector (31 downto 0);
 begin
 
 --                                                                                    BEGIN
+s_clk <= not clk;
 
-clock: clk_div
-  PORT MAP(
-        clk => clk,
-        reset => reset,
-        clk0 => s_clk0,
-        clk1 => s_clk1,
-        clk2 => s_clk2
-  );
 
 e_IF: eIF
   PORT MAP(
-        if_clk1 => s_clk1,
-        if_clk2 => s_clk2,
+        if_clk => clk,
         if_reset => reset,
         if_branch => s_if_branch,
         if_branch_addr => s_if_branch_addr,
@@ -293,7 +277,7 @@ e_IF: eIF
 
 r_IF_ID: rIF_ID
   PORT MAP(
-        fd_clk => clk,
+        fd_clk => s_clk,
         fd_reset => reset,
         fd_PC_in => s_if_PC,
         fd_instr_in => s_if_instr,
@@ -303,8 +287,7 @@ r_IF_ID: rIF_ID
 
 e_ID_WB: eID_WB
   PORT MAP(
-        idwb_clk1 => s_clk1,
-        idwb_clk2 => s_clk2,
+        idwb_clk => clk,
         idwb_reset => reset,
         id_instr => s_id_instr,
         id_PC => s_id_PC,
@@ -329,7 +312,7 @@ e_ID_WB: eID_WB
 
 r_ID_EX: rID_EX
   PORT MAP(
-        dex_clk => s_clk0,
+        dex_clk => s_clk,
         dex_reset => reset,
         dex_PC_in => s_id_PC,
         dex_rs_in => s_id_rs,
@@ -365,8 +348,7 @@ r_ID_EX: rID_EX
 
 e_EX: eEX
   PORT MAP(
-        ex_clk1 => s_clk1,
-        ex_clk2 => s_clk2,
+        ex_clk => clk,
         ex_reset => reset,
         ex_pc => s_ex_PC,
         ex_rs => s_ex_rs,
@@ -383,7 +365,7 @@ e_EX: eEX
 
 r_EX_MEM: rEX_MEM
   PORT MAP(
-        xm_clk => clk,
+        xm_clk => s_clk,
         xm_reset => reset,
         xm_branch_in => s_ex_branch_out,
         xm_branch_addr_in => s_ex_branch_addr,
@@ -407,8 +389,7 @@ r_EX_MEM: rEX_MEM
 
 e_MEM: eMEM
   PORT MAP(
-        mem_clk1 => s_clk1,
-        mem_clk2 => s_clk2,
+        mem_clk => clk,
         mem_reset => reset,
         mem_write => s_mem_memwrite,
         mem_read => s_mem_memread,
@@ -420,7 +401,7 @@ e_MEM: eMEM
 
 r_MEM_WB: rMEM_WB
   PORT MAP(
-        mw_clk => clk,
+        mw_clk => s_clk,
         mw_reset => reset,
         mw_regw_data_in => s_mem_regw_data,
         mw_rwrite_addr_in => s_mem_rwrite_addr,

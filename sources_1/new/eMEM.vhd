@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity eMEM is
     Port ( 
-        mem_clk1, mem_clk2, mem_reset : in STD_LOGIC;
+        mem_clk, mem_reset : in STD_LOGIC;
                     -- señal de control para escribir
         mem_write : in std_logic;
                     -- señal de control para leer
@@ -55,7 +55,7 @@ architecture Behavioral of eMEM is
 
 component mem_data is
     Port ( 
-        md_clk1, md_clk2, md_reset : in STD_LOGIC;
+        md_clk, md_reset : in STD_LOGIC;
         md_addr : in std_logic_vector (4 downto 0);
         md_write : in std_logic;
         md_read : in std_logic;
@@ -71,8 +71,7 @@ begin
 
  MEM_DataMem: mem_data
   port map(
-      md_clk1 => mem_clk1,
-      md_clk2 => mem_clk2,
+      md_clk => mem_clk,
       md_reset => mem_reset,
       md_addr => mem_sALU(6 downto 2),
       md_write => mem_write,
