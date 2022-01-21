@@ -41,6 +41,7 @@ component ALU is
   port ( 
     a : in std_logic_vector (31 downto 0);
     b : in std_logic_vector (31 downto 0);
+    sa : in std_logic_vector (4 downto 0);
     alu_op : in std_logic_vector (2 downto 0);
     aux : in std_logic;
     s : out std_logic_vector(31 downto 0);
@@ -63,6 +64,7 @@ t_ALU : ALU
   port map (
     a => s_a,
     b => s_b,
+    sa => "00000",
     alu_op => s_alu_op,
     aux => s_aux,
     s => s_s,

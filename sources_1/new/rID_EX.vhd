@@ -87,7 +87,7 @@ begin
         dex_rt_out <= x"00000000";
         dex_sa_out <= "00000";
         dex_imm_out <= x"00000000";
-        dex_rwrite_addr_out <= x"00000000";
+        dex_rwrite_addr_out <= "00000";
         dex_jump_out <= '0';
         dex_branch_out <= '0';
         dex_memread_out <= '0';
@@ -103,7 +103,6 @@ begin
         dex_sa_out <= dex_sa_in;
         dex_imm_out <= dex_imm_in;
         dex_rwrite_addr_out <= dex_rwrite_addr_in;
-        dex_jump_out <= dex_jump_in;
         dex_branch_out <= dex_branch_in;
         dex_memread_out <= dex_memread_in;
         dex_memwrite_out <= dex_memwrite_in;
@@ -111,6 +110,8 @@ begin
         dex_aluop_out <= dex_aluop_in;
         dex_alusrc_out <= dex_alusrc_in;
         dex_regwrite_out <= dex_regwrite_in;
+        dex_jump_out <= dex_jump_in;
+        dex_jump_addr_out <= dex_jump_addr_in;
     end if;
 end process;
 

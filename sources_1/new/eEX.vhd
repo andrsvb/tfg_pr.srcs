@@ -54,7 +54,8 @@ entity eEX is
         -- address to branch program counter to
     ex_branch_addr : out std_logic_vector (31 downto 0);
         -- result of the ALU operation
-    ex_sALU : out std_logic_vector (31 downto 0)
+    ex_sALU : out std_logic_vector (31 downto 0);
+    ex_overflow : out std_logic
   );
 end eEX;
 
@@ -85,7 +86,6 @@ end component;
 signal s_b : std_logic_vector (31 downto 0);
 signal s_aux : std_logic;
 signal s_sALU : std_logic_vector (31 downto 0);
-signal s_overflow : std_logic;
 signal s_c_out : std_logic;
 signal s_zero : std_logic;
 signal s_branch : std_logic;
@@ -103,7 +103,7 @@ EX_ALU : ALU
     alu_op => ex_aluop(2 downto 0),
     aux => ex_aluop(0),
     s => s_sALU,
-    overflow => s_overflow,
+    overflow => ex_overflow,
     c_out => s_c_out
   );
 

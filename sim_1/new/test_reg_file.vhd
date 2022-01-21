@@ -86,7 +86,7 @@ regs : reg_file
     s_reg1_addr <= "00000";
     s_reg2_addr <= "00001";
     s_write <= '0';
-    s_write_addr <= "00001";
+    s_write_addr <= "00000";
     s_write_data <= x"00000000";
     wait for 100 ns;
     s_reset <= '0';

@@ -41,11 +41,10 @@ component ALU is
   port ( 
     a : in std_logic_vector (31 downto 0);
     b : in std_logic_vector (31 downto 0);
+    sa : in std_logic_vector (4 downto 0);
     alu_op : in std_logic_vector (2 downto 0);
     aux : in std_logic;
-    s : out std_logic_vector(31 downto 0);
-    overflow : out std_logic;
-    c_out : out std_logic
+    s : out std_logic_vector(31 downto 0)
   );
 end component;
 
@@ -54,8 +53,6 @@ signal s_b : std_logic_vector (31 downto 0);
 signal s_alu_op : std_logic_vector (2 downto 0);
 signal s_aux : std_logic;
 signal s_s : std_logic_vector (31 downto 0);
-signal s_overflow : std_logic;
-signal s_c_out : std_logic;
 
 begin
 
@@ -63,11 +60,10 @@ t_ALU : ALU
   port map (
     a => s_a,
     b => s_b,
+    sa => "00000",
     alu_op => s_alu_op,
     aux => s_aux,
-    s => s_s,
-    overflow => s_overflow,
-    c_out => s_c_out
+    s => s_s
   );
   t_process : process
   begin

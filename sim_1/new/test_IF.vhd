@@ -81,7 +81,7 @@ e_IF: eIF
 -- TEST INSTRUCTION FETCH
 --            SETUP
 
-    s_reset <= '1';
+    s_reset <= '0';
     s_clk <= '0';
     s_branch <= '0';
     s_branch_addr <= x"00000028";       -- 25 bits que no usa .. 10 .. 2 bits que no usa
@@ -125,6 +125,15 @@ e_IF: eIF
         s_clk <= not s_clk;
         wait for 100 ns;
     end loop;
+    
+--            LOOP
+
+    s_reset <= '1';
+    s_clk <= '0';
+    wait for 100 ns;
+    s_reset <= '0';
+    s_clk <= not s_clk;
+    wait for 100 ns;
     
     l_test_if: loop
         s_clk <= not s_clk;

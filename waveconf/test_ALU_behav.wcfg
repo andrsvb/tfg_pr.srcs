@@ -3,46 +3,46 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="test_ALU_behav.wdb" id="1">
+      <db_ref path="test_todos_behav.wdb" id="1">
          <top_modules>
-            <top_module name="test_ALU" />
+            <top_module name="test_todos" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="1200001fs"></ZoomEndTime>
-      <Cursor1Time time="1200000fs"></Cursor1Time>
+      <ZoomEndTime time="1300001fs"></ZoomEndTime>
+      <Cursor1Time time="1300000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
-      <ValueColumnWidth column_width="138"></ValueColumnWidth>
+      <ValueColumnWidth column_width="126"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="4" />
    <wvobject fp_name="group52" type="group">
       <obj_property name="label">logic</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/test_ALU/test_logic/s_b" type="array">
-         <obj_property name="ElementShortName">s_b[31:0]</obj_property>
-         <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/test_ALU/test_logic/s_a" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_logic/s_a" type="array">
          <obj_property name="ElementShortName">s_a[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_a[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_logic/s_alu_op" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_logic/s_b" type="array">
+         <obj_property name="ElementShortName">s_b[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_alu/test_logic/s_alu_op" type="array">
          <obj_property name="ElementShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="ObjectShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_logic/s_aux" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_logic/s_aux" type="logic">
          <obj_property name="ElementShortName">s_aux</obj_property>
          <obj_property name="ObjectShortName">s_aux</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_logic/s_s" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_logic/s_s" type="array">
          <obj_property name="ElementShortName">s_s[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_s[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
@@ -52,35 +52,35 @@
       <obj_property name="label">suma</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/test_ALU/test_suma/s_a" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_a" type="array">
          <obj_property name="ElementShortName">s_a[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_a[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_b" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_b" type="array">
          <obj_property name="ElementShortName">s_b[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_alu_op" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_alu_op" type="array">
          <obj_property name="ElementShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="ObjectShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_aux" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_aux" type="logic">
          <obj_property name="ElementShortName">s_aux</obj_property>
          <obj_property name="ObjectShortName">s_aux</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_s" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_s" type="array">
          <obj_property name="ElementShortName">s_s[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_s[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_overflow" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_overflow" type="logic">
          <obj_property name="ElementShortName">s_overflow</obj_property>
          <obj_property name="ObjectShortName">s_overflow</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_suma/s_c_out" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_suma/s_c_out" type="logic">
          <obj_property name="ElementShortName">s_c_out</obj_property>
          <obj_property name="ObjectShortName">s_c_out</obj_property>
       </wvobject>
@@ -89,35 +89,35 @@
       <obj_property name="label">set on less than</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/test_ALU/test_slt/s_a" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_a" type="array">
          <obj_property name="ElementShortName">s_a[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_a[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_b" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_b" type="array">
          <obj_property name="ElementShortName">s_b[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_alu_op" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_alu_op" type="array">
          <obj_property name="ElementShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="ObjectShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_aux" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_aux" type="logic">
          <obj_property name="ElementShortName">s_aux</obj_property>
          <obj_property name="ObjectShortName">s_aux</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_s" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_s" type="array">
          <obj_property name="ElementShortName">s_s[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_s[31:0]</obj_property>
          <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_overflow" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_overflow" type="logic">
          <obj_property name="ElementShortName">s_overflow</obj_property>
          <obj_property name="ObjectShortName">s_overflow</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_slt/s_c_out" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_slt/s_c_out" type="logic">
          <obj_property name="ElementShortName">s_c_out</obj_property>
          <obj_property name="ObjectShortName">s_c_out</obj_property>
       </wvobject>
@@ -126,27 +126,29 @@
       <obj_property name="label">shift</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/test_ALU/test_shift/s_a" type="array">
-         <obj_property name="ElementShortName">s_a[31:0]</obj_property>
-         <obj_property name="ObjectShortName">s_a[31:0]</obj_property>
-      </wvobject>
-      <wvobject fp_name="/test_ALU/test_shift/s_b" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_shift/s_b" type="array">
          <obj_property name="ElementShortName">s_b[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_b[31:0]</obj_property>
-         <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_shift/s_alu_op" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_shift/s_sa" type="array">
+         <obj_property name="ElementShortName">s_sa[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_sa[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_alu/test_shift/s_alu_op" type="array">
          <obj_property name="ElementShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="ObjectShortName">s_alu_op[2:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_shift/s_aux" type="logic">
+      <wvobject fp_name="/test_todos/t_alu/test_shift/s_aux" type="logic">
          <obj_property name="ElementShortName">s_aux</obj_property>
          <obj_property name="ObjectShortName">s_aux</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_ALU/test_shift/s_s" type="array">
+      <wvobject fp_name="/test_todos/t_alu/test_shift/s_s" type="array">
          <obj_property name="ElementShortName">s_s[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_s[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
       </wvobject>
    </wvobject>
 </wave_config>

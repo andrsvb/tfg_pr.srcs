@@ -117,14 +117,21 @@ suma : sum_32bits
   );
 
 -- overflow cuando:
---   a b s  op
---   + + -  add
---   - - +  add
---   + - -  sub
---   - + +  sub
-s_of_add <= (not a(31) and  not b(31) and s_sum(31)) or (a(31) and b(31) and not s_sum(31));
-s_of_sub <= (not a(31) and b(31) and s_sum(31)) or (a(31) and  not b(31) and not s_sum(31));
-s_overflow <= (s_of_add and not aux) or (s_of_sub and aux);
+--   a b s  operacion
+
+--   + + -  suma
+--   - - +  suma
+s_of_add <= (not a(31) and  not b(31) and s_sum(31))
+         or (a(31) and b(31) and not s_sum(31));
+
+--   + - -  resta
+--   - + +  resta
+s_of_sub <= (not a(31) and b(31) and s_sum(31))
+         or (a(31) and  not b(31) and not s_sum(31));
+
+--   suma cuando aux = 0, resta cuando aux = 1
+s_overflow <= (s_of_add and not aux)
+           or (s_of_sub and aux);
 
 -- SLT
   -- (a < b) => ((a - b) < 0)
@@ -164,7 +171,7 @@ with alu_op select s <=
   s_xor when "100",
   s_sl when "101",
   s_sr when "110",
-  "00000000000000000000000000000000" when others;
+  x"00000000" when others;
  -- solo producen overflow ADD/SUB
 with alu_op select overflow <=
   s_overflow when "010",
