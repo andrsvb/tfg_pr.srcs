@@ -42,7 +42,7 @@ begin
 t_arc : entity work.test_ARC;
 t_if : entity work.test_IF;
 t_rfd : entity work.test_reg_IF_ID;
-t_id : entity work.test_ID;
+t_id_wb : entity work.test_ID_WB;
 t_rdex : entity work.test_reg_ID_EX;
 t_ex : entity work.test_EX;
 t_alu : entity work.test_ALU;
@@ -50,6 +50,5 @@ t_regs : entity work.test_reg_file;
 t_rxm : entity work.test_reg_EX_MEM;
 t_mem : entity work.test_MEM;
 t_rmw : entity work.test_reg_MEM_WB;
-t_wb : entity work.test_WB;
 
 end Behavioral;

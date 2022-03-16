@@ -57,7 +57,7 @@ process (mw_clk, mw_reset)
 begin
     if (mw_reset = '1') then
         mw_regw_data_out <= x"00000000";
-        mw_rwrite_addr_out <= "0000";
+        mw_rwrite_addr_out <= "00000";
         mw_regwrite_out <= '0';
         
     elsif (mw_clk'event and mw_clk = '1') then

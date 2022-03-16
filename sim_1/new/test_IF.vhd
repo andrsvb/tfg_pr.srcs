@@ -73,6 +73,7 @@ e_IF: eIF
         if_instr => s_instr
   );
   
+  -- actual instruction
   s_PC_aux <= s_PC (6 downto 2);
   
   t_process : process

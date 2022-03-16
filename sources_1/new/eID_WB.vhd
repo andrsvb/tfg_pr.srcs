@@ -99,7 +99,6 @@ component control_unit is
     );
 end component;
 
-signal s_write_data : std_logic_vector (31 downto 0);
 signal s_regdst : std_logic;
 
 begin
@@ -112,7 +111,7 @@ regs : reg_file
         rf_rt_addr => id_instr(20 downto 16),
         rf_write => wb_regwrite,
         rf_write_addr => wb_rwrite_addr,
-        rf_write_data => s_write_data,
+        rf_write_data => wb_rwrite_data,
         rf_rs => id_rs,
         rf_rt => id_rt
     );

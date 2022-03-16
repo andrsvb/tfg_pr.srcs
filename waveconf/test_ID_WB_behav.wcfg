@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="test_todos_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="test_todos" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="5000001fs"></ZoomEndTime>
+      <Cursor1Time time="5000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="175"></NameColumnWidth>
+      <ValueColumnWidth column_width="62"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="10" />
+   <wvobject fp_name="/test_todos/t_id_wb/s_clk" type="logic">
+      <obj_property name="ElementShortName">s_clk</obj_property>
+      <obj_property name="ObjectShortName">s_clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_reset" type="logic">
+      <obj_property name="ElementShortName">s_reset</obj_property>
+      <obj_property name="ObjectShortName">s_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_PC" type="array">
+      <obj_property name="ElementShortName">s_PC[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_PC[31:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_str_instr" type="array">
+      <obj_property name="ElementShortName">s_str_instr[1:5]</obj_property>
+      <obj_property name="ObjectShortName">s_str_instr[1:5]</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_instr" type="array">
+      <obj_property name="ElementShortName">s_instr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_instr[31:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FF0080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group883" type="group">
+      <obj_property name="label">Aux instruction</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_opcode" type="array">
+         <obj_property name="ElementShortName">s_ins_opcode[5:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_opcode[5:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_rs" type="array">
+         <obj_property name="ElementShortName">s_ins_rs[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_rs[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_rt" type="array">
+         <obj_property name="ElementShortName">s_ins_rt[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_rt[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_rd" type="array">
+         <obj_property name="ElementShortName">s_ins_rd[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_rd[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_sa" type="array">
+         <obj_property name="ElementShortName">s_ins_sa[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_sa[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_funct" type="array">
+         <obj_property name="ElementShortName">s_ins_funct[5:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_funct[5:0]</obj_property>
+         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_imm" type="array">
+         <obj_property name="ElementShortName">s_ins_imm[15:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_imm[15:0]</obj_property>
+         <obj_property name="CustomSignalColor">#008000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_ins_index" type="array">
+         <obj_property name="ElementShortName">s_ins_index[25:0]</obj_property>
+         <obj_property name="ObjectShortName">s_ins_index[25:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_rs" type="array">
+      <obj_property name="ElementShortName">s_rs[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_rs[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/test_todos/t_id_wb/s_rt" type="array">
+      <obj_property name="ElementShortName">s_rt[31:0]</obj_property>
+      <obj_property name="ObjectShortName">s_rt[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="group113" type="group">
+      <obj_property name="label">DECODE</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test_todos/t_id_wb/s_sa" type="array">
+         <obj_property name="ElementShortName">s_sa[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_sa[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_imm" type="array">
+         <obj_property name="ElementShortName">s_imm[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_imm[31:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_jump_addr" type="array">
+         <obj_property name="ElementShortName">s_jump_addr[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_jump_addr[31:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_jump" type="logic">
+         <obj_property name="ElementShortName">s_jump</obj_property>
+         <obj_property name="ObjectShortName">s_jump</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_branch" type="logic">
+         <obj_property name="ElementShortName">s_branch</obj_property>
+         <obj_property name="ObjectShortName">s_branch</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_memread" type="logic">
+         <obj_property name="ElementShortName">s_memread</obj_property>
+         <obj_property name="ObjectShortName">s_memread</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_memwrite" type="logic">
+         <obj_property name="ElementShortName">s_memwrite</obj_property>
+         <obj_property name="ObjectShortName">s_memwrite</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_regsrc" type="logic">
+         <obj_property name="ElementShortName">s_regsrc</obj_property>
+         <obj_property name="ObjectShortName">s_regsrc</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/e_ID_WB/s_regdst" type="logic">
+         <obj_property name="ElementShortName">s_regdst</obj_property>
+         <obj_property name="ObjectShortName">s_regdst</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_alusrc" type="logic">
+         <obj_property name="ElementShortName">s_alusrc</obj_property>
+         <obj_property name="ObjectShortName">s_alusrc</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_aluop" type="array">
+         <obj_property name="ElementShortName">s_aluop[3:0]</obj_property>
+         <obj_property name="ObjectShortName">s_aluop[3:0]</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_id_regwrite" type="logic">
+         <obj_property name="ElementShortName">s_id_regwrite</obj_property>
+         <obj_property name="ObjectShortName">s_id_regwrite</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_id_rwrite_addr" type="array">
+         <obj_property name="ElementShortName">s_id_rwrite_addr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_id_rwrite_addr[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group114" type="group">
+      <obj_property name="label">WRITE BACK</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="/test_todos/t_id_wb/s_wb_regwrite" type="logic">
+         <obj_property name="ElementShortName">s_wb_regwrite</obj_property>
+         <obj_property name="ObjectShortName">s_wb_regwrite</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_wb_rwrite_addr" type="array">
+         <obj_property name="ElementShortName">s_wb_rwrite_addr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_wb_rwrite_addr[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_wb_rwrite_data" type="array">
+         <obj_property name="ElementShortName">s_wb_rwrite_data[31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_wb_rwrite_data[31:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+   </wvobject>
+</wave_config>

@@ -66,7 +66,7 @@ cu_regsrc <= '1' when cu_opcode = "100011" else '0';
 cu_alusrc <= '1' when cu_opcode = "001100" or cu_opcode = "001101" or cu_opcode = "001110" or cu_opcode = "001000" 
                    or cu_opcode = "001010" or cu_opcode = "100011" or cu_opcode = "101011" else '0';
 
-cu_regwrite <= '1' when not(cu_opcode = "101011" or cu_opcode = "000010" or (cu_opcode = "000000" and cu_funct = "001000")) else '0';
+cu_regwrite <= '1' when not(cu_opcode = "101011" or cu_opcode = "000010" or cu_opcode = "000100") else '0';
 
 cu_aluop <= "0000" when cu_opcode = "001100" or (cu_opcode = "000000" and cu_funct = "100100") else
             "1000" when cu_opcode = "000000" and cu_funct = "100111" else

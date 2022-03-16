@@ -41,7 +41,7 @@ entity eEX is
     ex_rs : in std_logic_vector (31 downto 0);
     ex_rt : in std_logic_vector (31 downto 0);
         -- shift amount
-    ex_sa : in std_logic_vector (31 downto 0);
+    ex_sa : in std_logic_vector (4 downto 0);
         -- immediate value
     ex_imm : in std_logic_vector (31 downto 0);
         -- control signal for ALU operation
