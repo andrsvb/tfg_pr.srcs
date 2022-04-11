@@ -37,6 +37,7 @@ entity eMEM is
                     -- señal de control para escribir
         mem_write : in std_logic;
                     -- señal de control para leer
+                    -- tambien la uso de regsrc: señal que indica de que datos escribir en registro (ALU / memoria)
         mem_read : in std_logic;
                     -- datos a escribir en memoria, del registro rt
         mem_rt : in std_logic_vector (31 downto 0);
@@ -44,8 +45,6 @@ entity eMEM is
                         -- sALU(6..2): direccion de memoria que escribir/leer
                         -- segun el valor de regsrc, se lleva a mem_regw_data
         mem_sALU : in std_logic_vector (31 downto 0);
-                    -- señal que indica de que datos escribir (ALU / memoria)
-        mem_regsrc : in std_logic;
                     -- datos a escribir en los registros
         mem_regw_data : out std_logic_vector (31 downto 0)
     );
@@ -80,7 +79,8 @@ begin
       md_data_out => s_mem_data_out
   );
 
--- escoge el origen de los datos a escribir en los registros
-mem_regw_data <= s_mem_data_out when mem_regsrc = '1' else mem_sALU;
+-- escoge el origen de los datos a escribir en registro
+-- regsrc con las operaciones que tengo es igual a memread
+mem_regw_data <= s_mem_data_out when mem_read = '1' else mem_sALU;
 
 end Behavioral;

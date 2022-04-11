@@ -52,7 +52,6 @@ component eID_WB IS
         id_branch : out std_logic;
         id_memread : out std_logic;
         id_memwrite : out std_logic;
-        id_regsrc : out std_logic;
         id_aluop : out std_logic_vector (3 downto 0);
         id_alusrc : out std_logic;
         id_regwrite : out std_logic;
@@ -96,7 +95,6 @@ signal s_id_rwrite_addr : std_logic_vector (4 downto 0);
 signal s_branch : std_logic;
 signal s_memread : std_logic;
 signal s_memwrite : std_logic;
-signal s_regsrc : std_logic;
 signal s_aluop : std_logic_vector (3 downto 0);
 signal s_alusrc : std_logic;
 signal s_id_regwrite : std_logic;
@@ -124,7 +122,6 @@ e_ID_WB: eID_WB
         id_branch => s_branch,
         id_memread => s_memread,
         id_memwrite => s_memwrite,
-        id_regsrc => s_regsrc,
         id_aluop => s_aluop,
         id_alusrc => s_alusrc,
         id_regwrite => s_id_regwrite,

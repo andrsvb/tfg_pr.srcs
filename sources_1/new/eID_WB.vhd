@@ -55,7 +55,6 @@ entity eID_WB is
         id_branch : out std_logic;
         id_memread : out std_logic;
         id_memwrite : out std_logic;
-        id_regsrc : out std_logic;
         id_aluop : out std_logic_vector (3 downto 0);
         id_alusrc : out std_logic;
         id_regwrite : out std_logic;
@@ -92,7 +91,6 @@ component control_unit is
         cu_branch : out std_logic;
         cu_memread : out std_logic;
         cu_memwrite : out std_logic;
-        cu_regsrc : out std_logic;
         cu_aluop : out std_logic_vector (3 downto 0);
         cu_alusrc : out std_logic;
         cu_regwrite : out std_logic
@@ -125,7 +123,6 @@ ctrl_unit : control_unit
         cu_branch => id_branch,
         cu_memread => id_memread,
         cu_memwrite => id_memwrite,
-        cu_regsrc => id_regsrc,
         cu_aluop => id_aluop,
         cu_alusrc => id_alusrc,
         cu_regwrite => id_regwrite

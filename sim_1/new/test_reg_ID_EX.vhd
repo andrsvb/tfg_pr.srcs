@@ -51,7 +51,6 @@ component rID_EX is
         dex_branch_in : in std_logic;
         dex_memread_in : in std_logic;
         dex_memwrite_in : in std_logic;
-        dex_regsrc_in : in std_logic;
         dex_aluop_in : in std_logic_vector (3 downto 0);
         dex_alusrc_in : in std_logic;
         dex_regwrite_in : in std_logic;
@@ -66,7 +65,6 @@ component rID_EX is
         dex_rwrite_addr_out : out std_logic_vector (4 downto 0);
         dex_memread_out : out std_logic;
         dex_memwrite_out : out std_logic;
-        dex_regsrc_out : out std_logic;
         dex_regwrite_out : out std_logic;
         dex_jump_out : out std_logic;
         dex_jump_addr_out : out std_logic_vector (31 downto 0)
@@ -86,7 +84,6 @@ signal s_jump_addr_in : std_logic_vector (31 downto 0);
 signal s_branch_in : std_logic;
 signal s_memread_in : std_logic;
 signal s_memwrite_in : std_logic;
-signal s_regsrc_in : std_logic;
 signal s_aluop_in : std_logic_vector (3 downto 0);
 signal s_alusrc_in : std_logic;
 signal s_regwrite_in : std_logic;
@@ -101,7 +98,6 @@ signal s_jump_addr_out : std_logic_vector (31 downto 0);
 signal s_branch_out : std_logic;
 signal s_memread_out : std_logic;
 signal s_memwrite_out : std_logic;
-signal s_regsrc_out : std_logic;
 signal s_aluop_out : std_logic_vector (3 downto 0);
 signal s_alusrc_out : std_logic;
 signal s_regwrite_out : std_logic;
@@ -124,7 +120,6 @@ reg_dex: rID_EX
         dex_branch_in => s_branch_in,
         dex_memread_in => s_memread_in,
         dex_memwrite_in => s_memwrite_in,
-        dex_regsrc_in => s_regsrc_in,
         dex_aluop_in => s_aluop_in,
         dex_alusrc_in => s_alusrc_in,
         dex_regwrite_in => s_regwrite_in,
@@ -137,7 +132,6 @@ reg_dex: rID_EX
         dex_branch_out => s_branch_out,
         dex_memread_out => s_memread_out,
         dex_memwrite_out => s_memwrite_out,
-        dex_regsrc_out => s_regsrc_out,
         dex_aluop_out => s_aluop_out,
         dex_alusrc_out => s_alusrc_out,
         dex_regwrite_out => s_regwrite_out,
@@ -191,7 +185,6 @@ begin
     s_jump_addr_in <= x"87878787";
     
     s_branch_in <= '1';
-    s_regsrc_in <= '0';
     s_rs_in <= x"89ABCDEF";
     s_rt_in <= x"12121212";
     
@@ -204,7 +197,6 @@ begin
 --      TEST 3
 
     s_branch_in <= '0';
-    s_regsrc_in <= '1';
     s_rs_in <= x"FEDCBA98";
     s_rt_in <= x"21212121";
     

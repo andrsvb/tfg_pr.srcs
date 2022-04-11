@@ -49,7 +49,6 @@ entity rID_EX is
         dex_branch_in : in std_logic;
         dex_memread_in : in std_logic;
         dex_memwrite_in : in std_logic;
-        dex_regsrc_in : in std_logic;
         dex_aluop_in : in std_logic_vector (3 downto 0);
         dex_alusrc_in : in std_logic;
         dex_regwrite_in : in std_logic;
@@ -67,7 +66,6 @@ entity rID_EX is
         dex_rwrite_addr_out : out std_logic_vector (4 downto 0);
         dex_memread_out : out std_logic;
         dex_memwrite_out : out std_logic;
-        dex_regsrc_out : out std_logic;
         dex_regwrite_out : out std_logic;
                 -- datos enviados a etapa if
         dex_jump_out : out std_logic;
@@ -92,7 +90,6 @@ begin
         dex_branch_out <= '0';
         dex_memread_out <= '0';
         dex_memwrite_out <= '0';
-        dex_regsrc_out <= '0';
         dex_aluop_out <= "0111";
         dex_alusrc_out <= '0';
         dex_regwrite_out <= '0';
@@ -106,7 +103,6 @@ begin
         dex_branch_out <= dex_branch_in;
         dex_memread_out <= dex_memread_in;
         dex_memwrite_out <= dex_memwrite_in;
-        dex_regsrc_out <= dex_regsrc_in;
         dex_aluop_out <= dex_aluop_in;
         dex_alusrc_out <= dex_alusrc_in;
         dex_regwrite_out <= dex_regwrite_in;
