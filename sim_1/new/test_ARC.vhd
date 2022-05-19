@@ -37,7 +37,39 @@ end test_ARC;
 
 architecture Behavioral of test_ARC is
 
+component ARC is
+    Port ( clk : in STD_LOGIC;
+           reset : in STD_LOGIC
+    );
+end component;
+
+signal s_clk : std_logic;
+signal s_reset : std_logic;
+
 begin
 
+tARC: ARC
+  PORT MAP(
+        clk => s_clk,
+        reset => s_reset
+  );    
+  
+  t_process : process
+  begin
+  
+    s_clk <= '0';
+    s_reset <= '0';
+    wait for 100 ns;
+    s_reset <= '1';
+    wait for 100 ns;
+    s_reset <= '0';
+    wait for 100 ns;
+  
+    l_test_if: loop
+        s_clk <= not s_clk;
+        wait for 100 ns;
+    end loop l_test_if;
+    
+  end process;
 
 end Behavioral;

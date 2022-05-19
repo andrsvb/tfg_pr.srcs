@@ -12,7 +12,7 @@
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
       <ZoomEndTime time="4900001fs"></ZoomEndTime>
-      <Cursor1Time time="435759fs"></Cursor1Time>
+      <Cursor1Time time="3839552fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="175"></NameColumnWidth>
@@ -122,12 +122,12 @@
       <obj_property name="label">DECODE</obj_property>
       <obj_property name="DisplayName">label</obj_property>
       <obj_property name="isExpanded"></obj_property>
-      <wvobject fp_name="/test_todos/t_id_wb/s_sa" type="array">
-         <obj_property name="ElementShortName">s_sa[4:0]</obj_property>
-         <obj_property name="ObjectShortName">s_sa[4:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+      <wvobject fp_name="/test_todos/t_id_wb/s_id_rwrite_addr" type="array">
+         <obj_property name="ElementShortName">s_id_rwrite_addr[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_id_rwrite_addr[4:0]</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_id_wb/s_imm" type="array">
          <obj_property name="ElementShortName">s_imm[31:0]</obj_property>
@@ -140,6 +140,13 @@
          <obj_property name="ElementShortName">s_jump_addr[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_jump_addr[31:0]</obj_property>
          <obj_property name="Radix">HEXRADIX</obj_property>
+         <obj_property name="CustomSignalColor">#008080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_id_wb/s_sa" type="array">
+         <obj_property name="ElementShortName">s_sa[4:0]</obj_property>
+         <obj_property name="ObjectShortName">s_sa[4:0]</obj_property>
+         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
          <obj_property name="CustomSignalColor">#008080</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
@@ -176,27 +183,20 @@
       <wvobject fp_name="/test_todos/t_id_wb/s_alusrc" type="logic">
          <obj_property name="ElementShortName">s_alusrc</obj_property>
          <obj_property name="ObjectShortName">s_alusrc</obj_property>
-         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_id_wb/s_id_regwrite" type="logic">
          <obj_property name="ElementShortName">s_id_regwrite</obj_property>
          <obj_property name="ObjectShortName">s_id_regwrite</obj_property>
-         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_id_wb/s_aluop" type="array">
          <obj_property name="ElementShortName">s_aluop[3:0]</obj_property>
          <obj_property name="ObjectShortName">s_aluop[3:0]</obj_property>
          <obj_property name="Radix">BINARYRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#FAAFBE</obj_property>
-         <obj_property name="UseCustomSignalColor">true</obj_property>
-      </wvobject>
-      <wvobject fp_name="/test_todos/t_id_wb/s_id_rwrite_addr" type="array">
-         <obj_property name="ElementShortName">s_id_rwrite_addr[4:0]</obj_property>
-         <obj_property name="ObjectShortName">s_id_rwrite_addr[4:0]</obj_property>
-         <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+         <obj_property name="CustomSignalColor">#00FF7F</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
