@@ -71,7 +71,7 @@ cu_aluop <= "0000" when cu_opcode = "001100" or (cu_opcode = "000000" and cu_fun
             "0001" when cu_opcode = "001101" or (cu_opcode = "000000" and cu_funct = "100101") else
             "0010" when cu_opcode = "001000" or cu_opcode = "100011" or cu_opcode = "101011" or (cu_opcode = "000000" and cu_funct = "100000") else
             "1010" when cu_opcode = "000100" or cu_opcode = "000101" or (cu_opcode = "000000" and cu_funct = "100010") else
-            "0011" when cu_opcode = "001010" or (cu_opcode = "000000" and cu_funct = "101010") else
+            "1011" when cu_opcode = "001010" or (cu_opcode = "000000" and cu_funct = "101010") else
             "0100" when cu_opcode = "001110" or (cu_opcode = "000000" and cu_funct = "100110") else
             "0101" when cu_opcode = "000000" and cu_funct = "000000" else
             "0110" when cu_opcode = "000000" and cu_funct = "000010" else

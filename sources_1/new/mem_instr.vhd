@@ -112,7 +112,7 @@ signal s_reg : reg := ( "000000" & "00000" & "00000" & "00010" & "00000" & "1001
 
 -- Valores en los registros:
     -- 0: 0
-    -- 1: 1     -- al principio para incrementar i de 1 en 1, cambiado a de 2 en 2 por reducir el numero de bucles
+    -- 1: 1     -- es util tener un registro a 1
     -- 2: i
     -- 3: aux1
     -- 4: aux2

@@ -57,6 +57,7 @@ end component;
 signal s_nextPC : std_logic_vector (31 downto 0);
 signal s_PC : std_logic_vector (31 downto 0) := x"00000000";
 signal s_PC4 : std_logic_vector (31 downto 0);
+signal s_hold : std_logic := '0';
 
 begin
 
@@ -76,8 +77,13 @@ process (pc_clk, pc_reset)
 begin
     if (pc_reset = '1') then
         s_PC <= x"00000000";
+        s_hold <= '1';
     elsif (pc_clk'event and pc_clk = '1') then
-        s_PC <= s_nextPC;
+        if (s_hold = '1') then
+            s_hold <= '0';
+        else
+            s_PC <= s_nextPC;
+        end if;
     end if;
 end process;
 

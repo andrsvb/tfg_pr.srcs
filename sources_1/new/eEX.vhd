@@ -101,7 +101,7 @@ EX_ALU : ALU
     b => s_b,
     sa => ex_sa,
     alu_op => ex_aluop(2 downto 0),
-    aux => ex_aluop(0),
+    aux => ex_aluop(3),
     s => s_sALU,
     overflow => ex_overflow,
     c_out => s_c_out

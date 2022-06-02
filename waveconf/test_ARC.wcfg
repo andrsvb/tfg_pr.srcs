@@ -10,13 +10,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="6500000fs"></ZoomEndTime>
-      <Cursor1Time time="1444889fs"></Cursor1Time>
+      <ZoomStartTime time="16227330fs"></ZoomStartTime>
+      <ZoomEndTime time="18612850fs"></ZoomEndTime>
+      <Cursor1Time time="2886757fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="195"></NameColumnWidth>
-      <ValueColumnWidth column_width="73"></ValueColumnWidth>
+      <ValueColumnWidth column_width="65"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="7" />
    <wvobject fp_name="group144" type="group">
@@ -35,7 +35,6 @@
    <wvobject fp_name="group143" type="group">
       <obj_property name="label">Global signals</obj_property>
       <obj_property name="DisplayName">label</obj_property>
-      <obj_property name="isExpanded"></obj_property>
       <wvobject fp_name="/test_todos/t_arc/tARC/clk" type="logic">
          <obj_property name="ElementShortName">clk</obj_property>
          <obj_property name="ObjectShortName">clk</obj_property>
@@ -74,13 +73,13 @@
       <wvobject fp_name="/test_todos/t_arc/tARC/s_if_jump" type="logic">
          <obj_property name="ElementShortName">s_if_jump</obj_property>
          <obj_property name="ObjectShortName">s_if_jump</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_if_jump_addr" type="array">
          <obj_property name="ElementShortName">s_if_jump_addr[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_if_jump_addr[31:0]</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_if_PC" type="array">
@@ -99,6 +98,7 @@
             <obj_property name="ObjectShortName">s_if_instr[31:0]</obj_property>
             <obj_property name="CustomSignalColor">#FF0000</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
+            <obj_property name="Radix">HEXRADIX</obj_property>
          </wvobject>
          <wvobject fp_name="vbus665" type="vbus">
             <obj_property name="label">opcode</obj_property>
@@ -445,6 +445,12 @@
             </wvobject>
          </wvobject>
       </wvobject>
+      <wvobject fp_name="/test_todos/t_arc/tARC/e_IF/IF_InstrMem/s_reg" type="array">
+         <obj_property name="ElementShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group146" type="group">
       <obj_property name="label">Instruction Decode</obj_property>
@@ -454,7 +460,7 @@
          <obj_property name="ElementShortName">s_id_PC[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_id_PC[31:0]</obj_property>
          <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_id_instr" type="array">
@@ -511,19 +517,19 @@
          <wvobject fp_name="/test_todos/t_arc/tARC/s_id_branch" type="logic">
             <obj_property name="ElementShortName">s_id_branch</obj_property>
             <obj_property name="ObjectShortName">s_id_branch</obj_property>
-            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_id_memread" type="logic">
             <obj_property name="ElementShortName">s_id_memread</obj_property>
             <obj_property name="ObjectShortName">s_id_memread</obj_property>
-            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_id_memwrite" type="logic">
             <obj_property name="ElementShortName">s_id_memwrite</obj_property>
             <obj_property name="ObjectShortName">s_id_memwrite</obj_property>
-            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_id_aluop" type="array">
@@ -546,6 +552,332 @@
             <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
       </wvobject>
+      <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg" type="array">
+         <obj_property name="ElementShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[0]" type="array">
+            <obj_property name="ElementShortName">[0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[1]" type="array">
+            <obj_property name="ElementShortName">[1][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[2]" type="array">
+            <obj_property name="ElementShortName">[2][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[3]" type="array">
+            <obj_property name="ElementShortName">[3][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[4]" type="array">
+            <obj_property name="ElementShortName">[4][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[5]" type="array">
+            <obj_property name="ElementShortName">[5][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[6]" type="array">
+            <obj_property name="ElementShortName">[6][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[7]" type="array">
+            <obj_property name="ElementShortName">[7][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[8]" type="array">
+            <obj_property name="ElementShortName">[8][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[9]" type="array">
+            <obj_property name="ElementShortName">[9][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[10]" type="array">
+            <obj_property name="ElementShortName">[10][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[11]" type="array">
+            <obj_property name="ElementShortName">[11][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[12]" type="array">
+            <obj_property name="ElementShortName">[12][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[13]" type="array">
+            <obj_property name="ElementShortName">[13][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[14]" type="array">
+            <obj_property name="ElementShortName">[14][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[15]" type="array">
+            <obj_property name="ElementShortName">[15][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[16]" type="array">
+            <obj_property name="ElementShortName">[16][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[17]" type="array">
+            <obj_property name="ElementShortName">[17][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[18]" type="array">
+            <obj_property name="ElementShortName">[18][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[19]" type="array">
+            <obj_property name="ElementShortName">[19][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[20]" type="array">
+            <obj_property name="ElementShortName">[20][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[21]" type="array">
+            <obj_property name="ElementShortName">[21][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[22]" type="array">
+            <obj_property name="ElementShortName">[22][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[23]" type="array">
+            <obj_property name="ElementShortName">[23][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[24]" type="array">
+            <obj_property name="ElementShortName">[24][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[25]" type="array">
+            <obj_property name="ElementShortName">[25][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[26]" type="array">
+            <obj_property name="ElementShortName">[26][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[27]" type="array">
+            <obj_property name="ElementShortName">[27][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[28]" type="array">
+            <obj_property name="ElementShortName">[28][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[29]" type="array">
+            <obj_property name="ElementShortName">[29][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[30]" type="array">
+            <obj_property name="ElementShortName">[30][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[31]" type="array">
+            <obj_property name="ElementShortName">[31][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[0]" type="array">
+            <obj_property name="ElementShortName">[0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[1]" type="array">
+            <obj_property name="ElementShortName">[1][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[2]" type="array">
+            <obj_property name="ElementShortName">[2][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[3]" type="array">
+            <obj_property name="ElementShortName">[3][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[4]" type="array">
+            <obj_property name="ElementShortName">[4][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[5]" type="array">
+            <obj_property name="ElementShortName">[5][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[6]" type="array">
+            <obj_property name="ElementShortName">[6][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[7]" type="array">
+            <obj_property name="ElementShortName">[7][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[8]" type="array">
+            <obj_property name="ElementShortName">[8][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[9]" type="array">
+            <obj_property name="ElementShortName">[9][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[10]" type="array">
+            <obj_property name="ElementShortName">[10][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[11]" type="array">
+            <obj_property name="ElementShortName">[11][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[12]" type="array">
+            <obj_property name="ElementShortName">[12][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[13]" type="array">
+            <obj_property name="ElementShortName">[13][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[14]" type="array">
+            <obj_property name="ElementShortName">[14][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[15]" type="array">
+            <obj_property name="ElementShortName">[15][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[16]" type="array">
+            <obj_property name="ElementShortName">[16][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[17]" type="array">
+            <obj_property name="ElementShortName">[17][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[18]" type="array">
+            <obj_property name="ElementShortName">[18][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[19]" type="array">
+            <obj_property name="ElementShortName">[19][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[20]" type="array">
+            <obj_property name="ElementShortName">[20][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[21]" type="array">
+            <obj_property name="ElementShortName">[21][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[22]" type="array">
+            <obj_property name="ElementShortName">[22][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[23]" type="array">
+            <obj_property name="ElementShortName">[23][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[24]" type="array">
+            <obj_property name="ElementShortName">[24][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[25]" type="array">
+            <obj_property name="ElementShortName">[25][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[26]" type="array">
+            <obj_property name="ElementShortName">[26][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[27]" type="array">
+            <obj_property name="ElementShortName">[27][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[28]" type="array">
+            <obj_property name="ElementShortName">[28][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[29]" type="array">
+            <obj_property name="ElementShortName">[29][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[30]" type="array">
+            <obj_property name="ElementShortName">[30][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[31]" type="array">
+            <obj_property name="ElementShortName">[31][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+         </wvobject>
+      </wvobject>
    </wvobject>
    <wvobject fp_name="group473" type="group">
       <obj_property name="label">Execution</obj_property>
@@ -556,6 +888,7 @@
          <obj_property name="ObjectShortName">s_ex_aluop[3:0]</obj_property>
          <obj_property name="CustomSignalColor">#FFFF00</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="Radix">BINARYRADIX</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_PC" type="array">
          <obj_property name="ElementShortName">s_ex_PC[31:0]</obj_property>
@@ -586,19 +919,19 @@
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_branch_in" type="logic">
          <obj_property name="ElementShortName">s_ex_branch_in</obj_property>
          <obj_property name="ObjectShortName">s_ex_branch_in</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_branch_out" type="logic">
          <obj_property name="ElementShortName">s_ex_branch_out</obj_property>
          <obj_property name="ObjectShortName">s_ex_branch_out</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_branch_addr" type="array">
          <obj_property name="ElementShortName">s_ex_branch_addr[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_ex_branch_addr[31:0]</obj_property>
-         <obj_property name="CustomSignalColor">#808080</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
          <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_sALU" type="array">
@@ -610,25 +943,36 @@
       <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_alusrc" type="logic">
          <obj_property name="ElementShortName">s_ex_alusrc</obj_property>
          <obj_property name="ObjectShortName">s_ex_alusrc</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="group474" type="group">
          <obj_property name="label">Control Signals</obj_property>
          <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_rwrite_addr" type="array">
             <obj_property name="ElementShortName">s_ex_rwrite_addr[4:0]</obj_property>
             <obj_property name="ObjectShortName">s_ex_rwrite_addr[4:0]</obj_property>
+            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_memread" type="logic">
             <obj_property name="ElementShortName">s_ex_memread</obj_property>
             <obj_property name="ObjectShortName">s_ex_memread</obj_property>
+            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_memwrite" type="logic">
             <obj_property name="ElementShortName">s_ex_memwrite</obj_property>
             <obj_property name="ObjectShortName">s_ex_memwrite</obj_property>
+            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
          <wvobject fp_name="/test_todos/t_arc/tARC/s_ex_regwrite" type="logic">
             <obj_property name="ElementShortName">s_ex_regwrite</obj_property>
             <obj_property name="ObjectShortName">s_ex_regwrite</obj_property>
+            <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
          </wvobject>
       </wvobject>
    </wvobject>
@@ -643,26 +987,49 @@
       <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_rwrite_addr" type="array">
          <obj_property name="ElementShortName">s_mem_rwrite_addr[4:0]</obj_property>
          <obj_property name="ObjectShortName">s_mem_rwrite_addr[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_sALU" type="array">
          <obj_property name="ElementShortName">s_mem_sALU[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_mem_sALU[31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#800080</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_memread" type="logic">
          <obj_property name="ElementShortName">s_mem_memread</obj_property>
          <obj_property name="ObjectShortName">s_mem_memread</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_memwrite" type="logic">
          <obj_property name="ElementShortName">s_mem_memwrite</obj_property>
          <obj_property name="ObjectShortName">s_mem_memwrite</obj_property>
+         <obj_property name="CustomSignalColor">#A0A0A4</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
-      <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_regwrite" type="logic">
-         <obj_property name="ElementShortName">s_mem_regwrite</obj_property>
-         <obj_property name="ObjectShortName">s_mem_regwrite</obj_property>
+      <wvobject fp_name="group235" type="group">
+         <obj_property name="label">Control signals</obj_property>
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_regwrite" type="logic">
+            <obj_property name="ElementShortName">s_mem_regwrite</obj_property>
+            <obj_property name="ObjectShortName">s_mem_regwrite</obj_property>
+            <obj_property name="CustomSignalColor">#D2691E</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_regw_data" type="array">
+            <obj_property name="ElementShortName">s_mem_regw_data[31:0]</obj_property>
+            <obj_property name="ObjectShortName">s_mem_regw_data[31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#D2691E</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
       </wvobject>
-      <wvobject fp_name="/test_todos/t_arc/tARC/s_mem_regw_data" type="array">
-         <obj_property name="ElementShortName">s_mem_regw_data[31:0]</obj_property>
-         <obj_property name="ObjectShortName">s_mem_regw_data[31:0]</obj_property>
+      <wvobject fp_name="/test_todos/t_arc/tARC/e_MEM/MEM_DataMem/s_reg" type="array">
+         <obj_property name="ElementShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
    </wvobject>
    <wvobject fp_name="group481" type="group">
@@ -672,14 +1039,345 @@
       <wvobject fp_name="/test_todos/t_arc/tARC/s_wb_regwrite" type="logic">
          <obj_property name="ElementShortName">s_wb_regwrite</obj_property>
          <obj_property name="ObjectShortName">s_wb_regwrite</obj_property>
+         <obj_property name="CustomSignalColor">#FF0000</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_wb_rwrite_addr" type="array">
          <obj_property name="ElementShortName">s_wb_rwrite_addr[4:0]</obj_property>
          <obj_property name="ObjectShortName">s_wb_rwrite_addr[4:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
       </wvobject>
       <wvobject fp_name="/test_todos/t_arc/tARC/s_wb_rwrite_data" type="array">
          <obj_property name="ElementShortName">s_wb_rwrite_data[31:0]</obj_property>
          <obj_property name="ObjectShortName">s_wb_rwrite_data[31:0]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg" type="array">
+         <obj_property name="ElementShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="ObjectShortName">s_reg[0:31][31:0]</obj_property>
+         <obj_property name="CustomSignalColor">#FFFFFF</obj_property>
+         <obj_property name="UseCustomSignalColor">true</obj_property>
+         <obj_property name="isExpanded"></obj_property>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[0]" type="array">
+            <obj_property name="ElementShortName">[0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[1]" type="array">
+            <obj_property name="ElementShortName">[1][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[2]" type="array">
+            <obj_property name="ElementShortName">[2][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[3]" type="array">
+            <obj_property name="ElementShortName">[3][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[4]" type="array">
+            <obj_property name="ElementShortName">[4][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[5]" type="array">
+            <obj_property name="ElementShortName">[5][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[6]" type="array">
+            <obj_property name="ElementShortName">[6][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[7]" type="array">
+            <obj_property name="ElementShortName">[7][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[8]" type="array">
+            <obj_property name="ElementShortName">[8][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[9]" type="array">
+            <obj_property name="ElementShortName">[9][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[10]" type="array">
+            <obj_property name="ElementShortName">[10][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[11]" type="array">
+            <obj_property name="ElementShortName">[11][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[12]" type="array">
+            <obj_property name="ElementShortName">[12][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[13]" type="array">
+            <obj_property name="ElementShortName">[13][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#00FF7F</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[14]" type="array">
+            <obj_property name="ElementShortName">[14][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[15]" type="array">
+            <obj_property name="ElementShortName">[15][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[16]" type="array">
+            <obj_property name="ElementShortName">[16][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[17]" type="array">
+            <obj_property name="ElementShortName">[17][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[18]" type="array">
+            <obj_property name="ElementShortName">[18][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[19]" type="array">
+            <obj_property name="ElementShortName">[19][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[20]" type="array">
+            <obj_property name="ElementShortName">[20][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[21]" type="array">
+            <obj_property name="ElementShortName">[21][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[22]" type="array">
+            <obj_property name="ElementShortName">[22][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[23]" type="array">
+            <obj_property name="ElementShortName">[23][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[24]" type="array">
+            <obj_property name="ElementShortName">[24][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[25]" type="array">
+            <obj_property name="ElementShortName">[25][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[26]" type="array">
+            <obj_property name="ElementShortName">[26][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[27]" type="array">
+            <obj_property name="ElementShortName">[27][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[28]" type="array">
+            <obj_property name="ElementShortName">[28][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[29]" type="array">
+            <obj_property name="ElementShortName">[29][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[30]" type="array">
+            <obj_property name="ElementShortName">[30][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[31]" type="array">
+            <obj_property name="ElementShortName">[31][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+            <obj_property name="CustomSignalColor">#808080</obj_property>
+            <obj_property name="UseCustomSignalColor">true</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[0]" type="array">
+            <obj_property name="ElementShortName">[0][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[0][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[1]" type="array">
+            <obj_property name="ElementShortName">[1][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[1][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[2]" type="array">
+            <obj_property name="ElementShortName">[2][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[2][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[3]" type="array">
+            <obj_property name="ElementShortName">[3][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[3][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[4]" type="array">
+            <obj_property name="ElementShortName">[4][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[4][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[5]" type="array">
+            <obj_property name="ElementShortName">[5][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[5][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[6]" type="array">
+            <obj_property name="ElementShortName">[6][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[6][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[7]" type="array">
+            <obj_property name="ElementShortName">[7][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[7][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[8]" type="array">
+            <obj_property name="ElementShortName">[8][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[8][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[9]" type="array">
+            <obj_property name="ElementShortName">[9][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[9][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[10]" type="array">
+            <obj_property name="ElementShortName">[10][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[10][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[11]" type="array">
+            <obj_property name="ElementShortName">[11][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[11][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[12]" type="array">
+            <obj_property name="ElementShortName">[12][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[12][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[13]" type="array">
+            <obj_property name="ElementShortName">[13][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[13][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[14]" type="array">
+            <obj_property name="ElementShortName">[14][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[14][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[15]" type="array">
+            <obj_property name="ElementShortName">[15][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[15][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[16]" type="array">
+            <obj_property name="ElementShortName">[16][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[16][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[17]" type="array">
+            <obj_property name="ElementShortName">[17][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[17][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[18]" type="array">
+            <obj_property name="ElementShortName">[18][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[18][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[19]" type="array">
+            <obj_property name="ElementShortName">[19][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[19][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[20]" type="array">
+            <obj_property name="ElementShortName">[20][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[20][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[21]" type="array">
+            <obj_property name="ElementShortName">[21][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[21][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[22]" type="array">
+            <obj_property name="ElementShortName">[22][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[22][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[23]" type="array">
+            <obj_property name="ElementShortName">[23][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[23][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[24]" type="array">
+            <obj_property name="ElementShortName">[24][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[24][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[25]" type="array">
+            <obj_property name="ElementShortName">[25][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[25][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[26]" type="array">
+            <obj_property name="ElementShortName">[26][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[26][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[27]" type="array">
+            <obj_property name="ElementShortName">[27][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[27][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[28]" type="array">
+            <obj_property name="ElementShortName">[28][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[28][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[29]" type="array">
+            <obj_property name="ElementShortName">[29][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[29][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[30]" type="array">
+            <obj_property name="ElementShortName">[30][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[30][31:0]</obj_property>
+         </wvobject>
+         <wvobject fp_name="/test_todos/t_arc/tARC/e_ID_WB/regs/s_reg[31]" type="array">
+            <obj_property name="ElementShortName">[31][31:0]</obj_property>
+            <obj_property name="ObjectShortName">[31][31:0]</obj_property>
+         </wvobject>
       </wvobject>
    </wvobject>
 </wave_config>
