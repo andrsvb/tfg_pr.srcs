@@ -86,13 +86,14 @@ begin
         dex_sa_out <= "00000";
         dex_imm_out <= x"00000000";
         dex_rwrite_addr_out <= "00000";
-        dex_jump_out <= '0';
         dex_branch_out <= '0';
         dex_memread_out <= '0';
         dex_memwrite_out <= '0';
         dex_aluop_out <= "0111";
         dex_alusrc_out <= '0';
         dex_regwrite_out <= '0';
+        dex_jump_out <= '0';
+        dex_jump_addr_out <= x"00000000";
     elsif (dex_clk'event and dex_clk = '1') then
         dex_PC_out <= dex_PC_in;
         dex_rs_out <= dex_rs_in;
