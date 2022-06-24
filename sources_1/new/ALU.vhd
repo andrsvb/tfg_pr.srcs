@@ -97,14 +97,13 @@ gen_b : for i in 0 to 31 generate
 end generate;
 
 -- AND si aux = 0; NOR si aux = 1
-gen_and : for i in 0 to 31 generate
-  s_and(i) <= s_na(i) and s_nb(i);
-end generate;
+s_and <= s_na and s_nb;
 
 -- OR
-gen_or : for i in 0 to 31 generate
-  s_or(i) <= a(i) or b(i);
-end generate;
+s_or <= a or b;
+
+-- XOR
+s_xor <= a xor b;
 
 -- ADD si aux = 0; SUB si aux = 1
 suma : sum_32bits
@@ -130,8 +129,7 @@ s_of_sub <= (not a(31) and b(31) and s_sum(31))
          or (a(31) and  not b(31) and not s_sum(31));
 
 --   suma cuando aux = 0, resta cuando aux = 1
-s_overflow <= (s_of_add and not aux)
-           or (s_of_sub and aux);
+s_overflow <= (s_of_add and not aux) or (s_of_sub and aux);
 
 -- SLT
   -- (a < b) => ((a - b) < 0)
@@ -139,11 +137,6 @@ s_overflow <= (s_of_add and not aux)
   -- como usa la resta, overflow solo si a y b de distintos signos
   -- si se da overflow, a < b si a < 0
 s_less <= "0000000000000000000000000000000" & ((s_sum(31) and not s_overflow) or (a(31) and s_overflow));
-
--- XOR
-gen_xor : for i in 0 to 31 generate
-  s_xor(i) <= a(i) xor b(i);
-end generate;
 
 -- SLL
 sh_left : SL
@@ -172,6 +165,7 @@ with alu_op select s <=
   s_sl when "101",
   s_sr when "110",
   x"00000000" when others;
+
  -- solo producen overflow ADD/SUB
 with alu_op select overflow <=
   s_overflow when "010",

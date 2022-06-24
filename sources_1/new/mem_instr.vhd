@@ -52,10 +52,10 @@ signal s_reg : reg := ( "000000" & "00000" & "00000" & "00010" & "00000" & "1001
                         "001000" & "00010" & "00010" & "0000000000001000",                -- do { i += 2x4 (8)               salta con beq a esta linea  <---
                         "000000" & "00011" & "00100" & "00011" & "00000" & "100000",      -- 	aux1 += aux2
                         x"00000000",                                                      --                        nop para que de tiempo a escribir
-                        "001010" & "00010" & "00101" & "0000000001010000",                --    (i < 80)? -> cond : 1 ; 0
+                        "001010" & "00010" & "00101" & "0000000001001000",                --    (i < 72)? -> cond : 1 ; 0
                         "000000" & "00011" & "00100" & "00100" & "00000" & "100000",      -- 	aux2 += aux1
                         "101011" & "00010" & "00011" & "0000000000000000",                -- 	mem[i] = aux1
-                        "000100" & "00101" & "00001" & "1111111111111010",                --   ..                      salta si cond = 1           ---> 
+                        "000100" & "00101" & "00001" & "1111111111111010",                --   ..                      salta si cond = 1                 ---> 
                         "101011" & "00010" & "00100" & "0000000000000100",                -- 	mem[i+1] = aux2
                         x"00000000",                                                      --                        nop ya que beq necesita 2 ciclos de reloj para propagarse
                         "001101" & "00000" & "01001" & "1111111111110101",                -- aux3 = x"FFF55500" 1            [aux3]: carga los 1os 16 bits
@@ -77,42 +77,10 @@ signal s_reg : reg := ( "000000" & "00000" & "00000" & "00010" & "00000" & "1001
                         "101011" & "00000" & "01101" & "0000000001100000"                 -- mem[24] = fib_xor
                       );
 
--- Programa en el orden original:
-
-        -- i = 0
-        -- aux1 = 0
-        -- aux2 = 1
-        -- mem[i] = aux1
-        -- mem[i+1] = aux2
-        -- do {                               salta con beq a esta linea  <---
-        -- i += 2
-        -- aux1 += aux2
-        -- aux2 += aux1
-        -- mem[i] = aux1
-        -- mem[i+1] = aux2
-        -- } while (i < 20)          compara i con 20 [slti cond i 20]
-        --   ..                      salta si cond = 0 [beq cond r0]         ---> 
-        --   ..
-        --   ..                      beq necesita 2 ciclos de reloj para propagarse
-        -- fib20 = mem[19]
-        -- fib13 = mem[12]
-        -- resta_fib = fib13 - fib20
-        -- mem[20] = resta_fib
-        -- aux3 = x"00555FFF"        carga los 1os 16 bits
-        --  ..                       mueve 16 bits a la izquierda
-        --  ..                       carga los ultimos 16 bits
-        -- fib_and = aux3 AND fib20
-        -- mem[21] = fib_and
-        -- fib_nor = aux3 NOR fib20
-        -- mem[22] = fib_nor
-        -- fib_or = aux3 OR fib20
-        -- mem[23] = fib_or
-        -- fib_xor = aux3 XOR fib20
-        -- mem[24] = fib_xor
 
 -- Valores en los registros:
     -- 0: 0
-    -- 1: 1     -- es util tener un registro a 1
+    -- 1: 1
     -- 2: i
     -- 3: aux1
     -- 4: aux2
