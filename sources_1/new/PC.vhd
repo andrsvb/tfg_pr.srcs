@@ -57,7 +57,7 @@ end component;
 signal s_nextPC : std_logic_vector (31 downto 0);
 signal s_PC : std_logic_vector (31 downto 0) := x"00000000";
 signal s_PC4 : std_logic_vector (31 downto 0);
-signal s_hold : std_logic := '0';
+signal s_hold : std_logic := '1';
 
 begin
 
@@ -71,7 +71,9 @@ sumPC4 : sum_32bits
     s_32 => s_PC4
   );
 
-s_nextPC <= pc_jump_addr when (pc_jump = '1') else pc_branch_addr when (pc_branch = '1') else s_PC4;
+s_nextPC <= pc_branch_addr when (pc_branch = '1')
+       else pc_jump_addr when (pc_jump = '1')
+       else s_PC4;
 
 process (pc_clk, pc_reset)
 begin

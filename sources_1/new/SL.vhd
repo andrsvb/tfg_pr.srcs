@@ -107,38 +107,14 @@ sh29 <= s_in(2 downto 0) & "00000000000000000000000000000";
 sh30 <= s_in(1 downto 0) & "000000000000000000000000000000";
 sh31 <= s_in(0) & "0000000000000000000000000000000";
 
-with s_sel select s_out <=
-  s_in when "00000",
-  sh01 when "00001",
-  sh02 when "00010",
-  sh03 when "00011",
-  sh04 when "00100",
-  sh05 when "00101",
-  sh06 when "00110",
-  sh07 when "00111",
-  sh08 when "01000",
-  sh09 when "01001",
-  sh10 when "01010",
-  sh11 when "01011",
-  sh12 when "01100",
-  sh13 when "01101",
-  sh14 when "01110",
-  sh15 when "01111",
-  sh16 when "10000",
-  sh17 when "10001",
-  sh18 when "10010",
-  sh19 when "10011",
-  sh20 when "10100",
-  sh21 when "10101",
-  sh22 when "10110",
-  sh23 when "10111",
-  sh24 when "11000",
-  sh25 when "11001",
-  sh26 when "11010",
-  sh27 when "11011",
-  sh28 when "11100",
-  sh29 when "11101",
-  sh30 when "11110",
-  sh31 when others;
+with s_sel select s_out(31 downto 0) <=
+  sh01 when "00001",  sh02 when "00010",  sh03 when "00011",  sh04 when "00100",
+  sh05 when "00101",  sh06 when "00110",  sh07 when "00111",  sh08 when "01000",
+  sh09 when "01001",  sh10 when "01010",  sh11 when "01011",  sh12 when "01100",
+  sh13 when "01101",  sh14 when "01110",  sh15 when "01111",  sh16 when "10000",
+  sh17 when "10001",  sh18 when "10010",  sh19 when "10011",  sh20 when "10100",
+  sh21 when "10101",  sh22 when "10110",  sh23 when "10111",  sh24 when "11000",
+  sh25 when "11001",  sh26 when "11010",  sh27 when "11011",  sh28 when "11100",
+  sh29 when "11101",  sh30 when "11110",  sh31 when "11111",  s_in when others;
 
 end Behavioral;

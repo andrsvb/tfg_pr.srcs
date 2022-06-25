@@ -136,7 +136,8 @@ s_overflow <= (s_of_add and not aux) or (s_of_sub and aux);
   -- si se produce overflow el signo del resultado no es correcto
   -- como usa la resta, overflow solo si a y b de distintos signos
   -- si se da overflow, a < b si a < 0
-s_less <= "0000000000000000000000000000000" & ((s_sum(31) and not s_overflow) or (a(31) and s_overflow));
+s_less <= "0000000000000000000000000000000" & ((s_sum(31) and not s_overflow) 
+                                            or (a(31) and s_overflow));
 
 -- SLL
 sh_left : SL
