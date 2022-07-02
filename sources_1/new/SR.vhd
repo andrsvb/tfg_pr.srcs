@@ -127,7 +127,9 @@ sh29 <= sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & 
 sh30 <= sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux 
     & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux &
     s_in(31 downto 30);
-sh31 <= sh_aux & s_in(31);
+sh31 <= sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux 
+    & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux & sh_aux &
+    sh_aux & s_in(31);
 
 with s_sel select s_out(31 downto 0) <=
   sh01 when "00001",  sh02 when "00010",  sh03 when "00011",  sh04 when "00100",
